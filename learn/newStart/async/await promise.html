@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //bad
+    // require('request-promise')
+    //     .get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
+    //     .then(function(response) {
+    //         return require('fs-promise').writeFile('article.html', response)
+    //     })
+    //     .then(function() {
+    //         console.log('File written')
+    //     })
+    //     .catch(function(err) {
+    //         console.error(err)
+    //     })
+
+    // good
+
+    async function getCleanCodeArticle() {
+        try {
+            var request = await require('request-promise')
+            var response = await request.get(
+                'https://en.wikipedia.org/wiki/Robert_Cecil_Martin',
+            )
+            var fileHandle = await require('fs-promise')
+
+            await fileHandle.writeFile('article.html', response)
+            console.log('File written')
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+
+</script>
+</body>
+</html>

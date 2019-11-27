@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+var nickname = "Kitty";
+  function Person(name){
+    this.nickname = name;
+    this.distractedGreeting = function() {
+
+      // console.log(this)
+      // setTimeout(function(){
+      //   console.log("Hello, my name is " + this.nickname);
+      // }, 500);
+      (function(){
+          console.log(this.nickname)
+      }).bind(this)()
+    }
+  }
+
+  var person = new Person('jawil');
+  person.distractedGreeting();
+  //Hello, my name is Kitty
+
+var nickname1 = "Kitty";
+function Person1(name){
+  this.nickname1 = name;
+  this.distractedGreeting = function() {
+
+
+
+    console.log(this)
+    setTimeout(function(){
+      console.log("Hello, my name is " + this.nickname1);
+    }.bind(this), 500);
+  }
+}
+
+var person1 = new Person1('jawil');
+person1.distractedGreeting();
+</script>
+
+</body>
+</html>

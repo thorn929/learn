@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //  这里是 Javascript 高级程序设计中的 继承那快的文章
+    // function FirstType(){
+    //     this.property = true;
+    // }
+    // FirstType.prototype.getFirstValue = function(){
+    //     return this.property;
+    // }
+    //
+    // function SubType(){
+    //     this.subproperty = false;
+    // }
+    //
+    // // 继承了 FirstType   把firstType的实例赋值给subType的原型上
+    // SubType.prototype = new FirstType();
+    // SubType.prototype.getSubValue = function(){
+    //     return this.subproperty;
+    // }
+    // var instance = new SubType();
+    //
+    //
+    // console.log(instance.getFirstValue());
+    // console.log(instance)
+    // 现在的结果是 instance指向 SubType 的原型 但是为什么不说成实例 而说成原型
+    // getFirstValue 方法  仍然还在FirstType.prototype中.但 property则位于subType.prototype中 这是因为property是一个实例属性
+    // 而getFirstValue则是一个原型方法     既然subType.prototype现在是FirstType的实例  那么 property当然就位于该实例中了
+    // 此外, 要注意instance.constructor现在指向的是FirstType 这是因为原来SubType.prototype中的constructor被重写的原因
+    //父类 Person
+    function Person() {
+        this.sayName = function() {
+            return this.name;
+        }
+    }
+
+    //子类 Chinese
+    function Chinese(name) {
+        //借助 call 实现继承
+        Person.call(this);
+        this.name = name;
+
+        this.ch = function() {
+            alert('我是中国人');
+        }
+    }
+
+    //子类 America
+    function America(name) {
+        //借助 call 实现继承
+        Person.call(this);
+        this.name = name;
+
+        this.am = function() {
+            alert('我是美国人');
+        }
+    }
+
+    //测试
+    var chinese = new Chinese('成龙');
+    //调用 父类方法
+    console.log(chinese.sayName());
+
+    var america = new America('America');
+    //调用 父类方法
+    console.log(america.sayName());
+
+
+
+
+
+</script>
+</body>
+</html>

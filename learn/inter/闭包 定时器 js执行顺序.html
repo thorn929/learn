@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+function fn1(){
+  for(var i=0;i<4;i++){
+    var tc= setTimeout(function(i){
+      console.log(i);
+      /// 这里有个延时器
+      clearTimeout(tc)
+    },10,i);
+  }
+}
+fn1()
+
+//请注意：这个tc是定义在闭包外面的，也就是说tc并没有被闭包保存，所以这里的tc指的是最后一个循环留下来的tc，所以最后一个3被清除了，没有输出。
+</script>
+</body>
+</html>

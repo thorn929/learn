@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function User() {
+        var  username, password;
+
+        function doLogin(user, pw) {
+            username = user;
+            password = pw;
+
+            // 执行剩下的登录工作;
+        }
+        var publicAPI = {
+            login: doLogin
+        }
+
+        return publicAPI;
+    }
+
+    var fred = User();
+
+
+    fred.login('fred', '1ds23')
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <child>
+        <p slot="header">
+            <span>1111</span>
+            <sup>111</sup>
+        </p>
+    </child>
+</div>
+
+<script>
+    Vue.component('child',{
+        template:`<div>
+                    <slot name="header"></slot>
+                  </div>`,
+    })
+
+    let vm = new Vue({
+        el:"#root",
+        data:{
+            content:''
+        }
+    })
+
+
+</script>
+</body>
+</html>

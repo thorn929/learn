@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   // 原始方法
+    // var obj = new Object();
+    //
+    // obj.name = 'Tom';
+    // obj.age = 22;
+    //
+    // obj.showName = function(){
+    //     console.log(this.name)
+    // }
+    //
+    // obj.showAge = function(){
+    //     console.log(this.age)
+    // }
+    //
+    // obj.showName();
+    // obj.showAge();
+
+   // 构造函数方式
+
+     // function Person(name,age) {
+     //     this.name = name;
+     //     this.age = age;
+     //     this.showName = function(){
+     //         console.log(this.name)
+     //     }
+     //     console.log(this)
+     // }
+     //
+     // var obj1 = new Person('张三',22)
+     //    obj1.showName()
+
+    // 原型方法
+
+    // function erson(){};// 定义个空构造函数  array 属性引用的是同一个array对象 所以打印的都是一样
+    // Person.prototype.age=22;
+    // Person.prototype.array = ['sun','leo'];
+    // Person.prototype.showAge = function(){
+    //     console.log(this.age)
+    // }
+    // Person.prototype.showArray = function(){
+    //     console.log(this.array)
+    // }
+    //
+    // let obj1 = new Person();
+    // let obj2 = new Person();
+    // obj1.array.push('blue');
+    // // array 属性引用的是同一个array对象 所以打印的都是一样
+    // obj1.showArray();
+    // obj2.showArray();
+
+    // 混合的构造函数和原型方式  属性变得私有  那这样算不算 深度拷贝
+
+    // function Person(name,age){
+    //     this.name = name;
+    //     this.age = age;
+    // }
+    // Person.prototype.showName = function(){
+    //     console.log(this.name)
+    // }
+    // Person.prototype.showAge = function(){
+    //     console.log(this.age)
+    // }
+    //
+    // let  obj1 = new Person('sun',22)
+    // let  obj2 = new Person('leo',21)
+    //
+    // obj1.showName();
+    // obj2.showName()
+
+
+    // 二 -------------  继承(主要包括属性的继承和方法的继承)
+    function Person(name,age,sex){
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    Person.prototype.showName = function(){
+        console.log(this.name);
+    }
+    Person.prototype.showAge = function(){
+        console.log(this.age);
+    }
+
+    function Worker(name,age,job){
+        // 构造函数伪装  调用父级的构造函数 为了继承属性
+        Person.call(this,name,age)
+        this.job = job
+    }
+
+    // 原型链 通过原型来继承父级的方法
+   console.log('------Person-----')
+   console.log(Person)
+   console.log(Person.prototype)
+    for(att in Person.prototype){
+        console.log(att)
+        Worker.prototype[att] = Person.prototype[att];
+    }
+
+    Worker.prototype.showJob = function(){
+        console.log(this.job)
+    }
+
+    let op = new Person('blue',1,'男')
+    let ow = new Worker('yellow',22,"程序员","女")
+
+    op.showName();
+    op.showAge();
+    ow.showName();
+    ow.showAge();
+    ow.showJob();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

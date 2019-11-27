@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+function demo(){
+    var n = 1;
+    function test(){
+        n++;
+    }
+    test();
+    return n;
+}
+ console.log(demo())
+
+
+
+
+
+</script>
+</body>
+</html>

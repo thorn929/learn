@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+</head>
+<body>
+<script>
+    // demo 1
+    // var  arr = [1, 2, 3, 4, 5];
+    // sum = arr.reduce(function(prev, cur, index, arr) {
+    //     console.log(prev, cur);
+    //     return prev + cur;
+    // })
+    // console.log(arr, sum);
+
+    //demo 2
+    var result = [
+        {
+            subject: 'math',
+            score: 88
+        },
+        {
+            subject: 'chinese',
+            score: 95
+        },
+        {
+            subject: 'english',
+            score: 80
+        }
+    ];
+
+    // for
+    // var sum = 0;
+    // for(var i = 0 ; i < result.length; i++){
+    //     sum += result[i].score
+    // }
+    // console.log(sum)
+
+    // reduce
+    var sum = result.reduce(function(pre, cur){
+        console.log(pre)
+        console.log(cur)
+        // return cur.score + pre;
+    },0)
+    // console.log(sum)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

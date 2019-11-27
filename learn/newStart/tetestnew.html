@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // git add .
+
+    let boxComplete = {
+        page_info: {
+            "total_item": 0,
+            "page_number": 1,
+            "total_page": 0,
+            "page_size": 10
+         },
+        boxesUsedRelatedInfo: {
+            "clothesCountInBoxesUsed": "0",
+            "clothesInBoxesUsedAmountPrice": "0"
+        },
+        list:  []
+    }
+
+
+    const { list: compleList = []} = boxComplete;
+
+    console.log(compleList)
+
+    // let a = {}
+    // let a = []
+    // let a = ""
+    // let a = undefined
+    let a = null
+
+    if(a){
+        console.log('exist is a')
+    } else {
+        console.log(2)
+    }
+
+</script>
+</body>
+</html>

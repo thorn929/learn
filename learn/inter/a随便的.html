@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>防抖动函数</title>
+  <style>
+  div{
+    width: 100px;
+    height: 100px;
+    background: red;
+  }
+  </style>
+</head>
+<div id="cli">点击</div>
+<body>
+<script>
+  // 防抖动   
+function debounce(func, delay){
+  let t;
+  return (...args) => {
+    if (t) {
+      clearTimeout(t);
+    }
+    t = setTimeout(() => {
+      func.apply(func, args);
+    }, delay);
+  }
+}
+// 当用户滚动时被调用的函数 
+function foo(a = 1) {
+  console.log('trouble i am in!');
+}
+
+let elem = document.getElementById('cli');
+elem.addEventListener('click', debounce(foo, 1000));
+
+</script>
+</body>
+</html>

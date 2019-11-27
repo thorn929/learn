@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nextTick - nextTick</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <div ref="tar" @click="handleClick">111 {{content}}</div>
+</div>
+<script>
+    let vm = new Vue({
+        el:"#root",
+        data:{
+            content: '初始值'
+        },
+        methods:{
+            handleClick(){
+                this.content = '改变了的值';
+                // 这会直接打印的话，由于dom元素还没有更新， 因此打印出来的还是未改变之前的值；
+                console.log(this.$refs.tar.innerText); //初始值
+                // dom 元素更新后执行, 因此此处能正确打印出更改之后的值;
+                this.$nextTick(() => {
+                    console.log(this.$refs.tar.innerText);
+                })
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

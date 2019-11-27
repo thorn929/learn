@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = 'asdfssaaasasasasaa';
+
+    var json = {};
+    for(var i = 0; i<str.length; i++){
+        if(!json[str.charAt(i)]){
+            json[str.charAt(i)] = 1;
+        }else{
+            json[str.charAt(i)]++;
+        }
+    }
+    console.log(json)
+    var iMax = 0;
+    for(var i in json){
+        if(json[i] > iMax){
+            iMax = json[i]
+            console.log(iMax)
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

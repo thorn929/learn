@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <style>
+        .activated{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <alert-box></alert-box>
+</div>
+
+<script>
+    Vue.component('alert-box', {
+        template: `
+            <div class="demo-alert-box">
+                 <slot> Something bad happened.</slot>
+             </div>
+  `
+    })
+    var app  =new Vue({
+        el:"#app",
+        data: {
+            posts: [
+                { id: 1, title: 'My journey with Vue' },
+                { id: 2, title: 'Blogging with Vue' },
+                { id: 3, title: 'Why Vue is so fun' },
+            ]
+        },
+        // 局部
+        components:{
+        },
+        methods:{
+
+        }
+    })
+
+</script>
+</body>
+</html>

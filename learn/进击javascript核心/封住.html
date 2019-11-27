@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // function demo(){
+    //     var n = 1;
+    //     function test(){// 特权方法  返回
+    //         return ++n;
+    //     }
+    //
+    //     return test // 这里返回外面用
+    // }
+    // console.log(demo())
+
+    // 占用内存  不利于继承这个
+    function A(){
+        function _xx(){alert("11122")};
+        this.xx = function(){
+            return _xx;
+        }
+    }
+    A.prototype = {
+        oth:function(){
+            alert('普通方法')
+        }
+    }
+
+    var a = new A();
+    var b = a.xx();
+    console.log(b())
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

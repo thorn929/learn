@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>///////</title>
+</head>
+<body>
+<script>
+
+const distinct = (arr) => arr.filter( (element, index, self) => {
+  return self.indexOf( element ) === index;
+});
+
+let arr = ["d","d",31,522,31];
+
+// console.log(distance(arr))
+
+// reduce  会顺序翻转  需要处理下 
+const distinct1 = (arr1) => arr1.sort().reduce( (init, current) => {
+  console.log('-----------------------')
+  console.log(init)
+  console.log(init.length)
+  console.log(current)
+  if (init.length === 0 || init[init.length - 1] !== current) {
+    init.push( current );
+  }
+  return init;
+}, []);
+
+let arr1 = ["d","d",31,522,31,4444];
+// distinct1(arr1)
+console.log(distinct1(arr1))
+</script>
+</body>
+</html>

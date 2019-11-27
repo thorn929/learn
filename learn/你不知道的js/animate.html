@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+
+div
+{
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: absolute;
+  margin: 0 auto;
+}
+p{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: black;
+
+  animation: wave .1s linear  infinite alternate;
+  animation-duration: 5.2s;
+
+  /*background-color: blue;*/
+  /*background: red;*/
+
+}
+
+
+@keyframes wave{
+0%{
+  transform: rotateZ(0deg) translate3d(0,10%,0) rotateZ(0deg)
+  /*transform:  rotate(3deg)*/
+}
+
+  100%{
+    transform: rotateZ(360deg) translate3d(50%,100%,0) rotateZ(-360deg)
+    /*transform:  rotate(-3deg)*/
+  }
+
+}
+
+
+</style>
+<body>
+<div>
+  <p class='a' style="transform: translate3d(0px, 0px, 0px)"></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function doThing() {
+            await doA()
+            await doB()
+        }
+
+        async function doA() {
+            return new Promise(resove => {
+                setTimeout(() => {
+                console.log('done A')
+                resove()
+                }, 2220)
+            })
+        }
+
+        async function doB() {
+            return new Promise(resove => {
+                setTimeout(() => {
+                console.log('done B')
+                resove()
+                }, 1100)
+            })
+        }
+        doThing()
+       // doThing().then(console.log('done Thing'))
+    </script>
+</body>
+</html>

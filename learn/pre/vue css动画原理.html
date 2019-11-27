@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <style>
+        /*.fade-enter{*/
+            /*opacity:0*/
+        /*}*/
+        /*.fade-enter-active{*/
+           /*transition:opacity 3s*/
+        /*}*/
+        /*.fade-leave-to{*/
+            /*opacity:0*/
+        /*}*/
+        /*.fade-leave-active{*/
+            /*transition:opacity 3s*/
+        /*}*/
+
+        .fade-enter-active, .fade-leave-active {
+            transition: all 3s ease;
+            transform: translateY(0px);
+        }
+        .fade-enter, .fade-leave-to {
+            transform: translateY(45px);
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <transition name = "fade">
+        <div v-show="show">hello world</div>
+    </transition>
+
+    <button @click="handleClick">切换</button>
+</div>
+<script>
+    let vm = new Vue({
+        el:"#root",
+        data:{
+            show:true
+        },
+        methods:{
+            handleClick(){
+                this.show = !this.show
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

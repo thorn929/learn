@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var p = {name: 'zxr'};
+    Object.defineProperty(p,'name',{
+        configurable:true ,
+        enumerable: true,
+        writable: true
+    });
+    p.name = 'www';
+    //for-in函数正常使用，显示字符串zxr
+    for(var t in p){
+        console.log(p[t]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .stage {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .heart {
+            width: 100px;
+            height: 100px;
+            /*background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;*/
+            background: url("pre/111.png") no-repeat;
+            background-position: 0 0;
+            cursor: pointer;
+            -webkit-transition: background-position 1.5s steps(19);
+            transition: background-position 1.5s steps(19);
+            -webkit-transition-duration: 0s;
+            transition-duration: 0s;
+        }
+        .heart.is-active {
+            -webkit-transition-duration: 1.5s;
+            transition-duration: 1.5s;
+            /*这里的思想太棒了  这是 整个图片长度为2900px 然后默认占了100px 所以这里写成了 -2800  而且上面的时间也要写成28  然后让他给过渡一下 就看不出来了 完美 太棒了*/
+            background-position: -1900px 0;
+        }
+
+    </style>
+</head>
+<body style="background:pink">
+<div class="stage">
+    <div class="heart"></div>
+</div>
+</body>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>
+    // $(function() {
+    //     $(".heart").on("click", function() {
+    //         $(this).toggleClass("is-active");
+    //     });
+    // });
+
+
+    var eLabel = document.getElementsByClassName('heart')[0]
+    console.log(eLabel)
+    var bFlag = true;
+    eLabel.onclick = function() {
+        if(bFlag){
+            this.classList.add("is-active")
+            bFlag = false
+        }else{
+            bFlag = true
+            this.classList.remove('is-active');
+        }
+
+    };
+</script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // function getUserStatus(payload: any): number {
+    //     const user = payload.data
+    //     let status: number = 0
+    //     if (user) {
+    //         // 兼容 koa 项目 token
+    //         if (typeof user.memberStatus === 'string') {
+    //             switch (user.memberStatus) {
+    //                 case 'C':
+    //                     status = 1
+    //                     break
+    //                 case 'B':
+    //                     status = 0
+    //                     break
+    //                 default:
+    //                     status = 2
+    //             }
+    //         } else {
+    //             status = user.memberStatus;
+    //         }
+    //     }
+    //     return status
+    // }
+    //
+    // var operation = {
+    //     add:function (num1,num2){
+    //         console.log(num1 + num2)
+    //         return this
+    //     },
+    //     subtract:function(num1, num2){
+    //         console.log(num1 + num2)
+    //         return this
+    //     }
+    // }
+    // operation.add(1,2).subtract(2,1)
+
+        // var name = 'xm';
+        // var person = {};
+        // person.name = 'xh';
+        // person.getName = function(){
+        //    return  this.name;
+        // }
+        //
+        // console.log(person.getName())
+        // console.log(person.getName.call(window))
+        // console.log(person.getName.apply(window))
+
+    // function add(num1, num2){
+    //         return num1 + num2;
+    // }
+    // function other(num1,num2){
+    //     return num1 * num2
+    // }
+    // console.log(add(1,2))
+    // console.log(add.call(other,3,3))
+    // console.log(this)
+
+
+    function add(c, d){
+        return this.a + this.b + c + d;
+    }
+    var o = {
+        a: 1,
+        b: 3
+    };
+
+    console.log(add.call(o, 5, 7));
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

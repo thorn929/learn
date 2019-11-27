@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // function add(a,b){
+  //   console.log(this)
+  //   return a+b;
+  // }
+  // function sub(a,b){
+  //   return a-b;
+  // }
+  //
+  // /*call的用法*/
+  // var a1 = add.call(sub,4,2);
+  // console.log(a1)
+
+  //定义一个add 方法
+    function add(x, y) {
+      return x + y;
+    }
+
+    //用call 来调用 add 方法
+    function myAddCall(x, y) {
+      //调用 add 方法 的 call 方法
+      console.log(this)
+      return add.call(this, x, y);
+    }
+
+    console.log(myAddCall(10, 20));    //输出结果30
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // function foo(...args){
+    //     args.shift();
+    //     console.log(...args)
+    // }
+    //
+    // // foo(11,12,13,14)
+    //
+    //
+    // function bar(){
+    //     var args = Array.prototype.slice.call(arguments)
+    //     args.push(4,5)
+    //
+    //     args = args.filter((v) => {
+    //         return v % 2 == 0
+    //     })
+    //     foo.apply(null, args)
+    //
+    // }
+    // bar(0,1,2,3)
+
+
+    //
+    // var a={length:2,0:'first',1:'second'};
+    // let b =  Array.prototype.slice.call(a);//  ["first", "second"]
+    //
+    // console.log(b)
+    // console.log(typeof b) // object
+
+
+    // function foo(x,y){
+    //     x = (x !== undefined ? x : 11);
+    //     y = (y !== undefined ? y : 31);
+    //
+    //     console.log(x+y)
+    // }
+    // foo(0,42)
+    // foo(undefined,6)
+    // foo('',6)
+    // foo(null,6)
+
+    // function foo(x = 11, y = 1){
+    //     console.log( x + y);
+    // }
+    //
+    // foo(5,undefined)
+    // foo(5,null)
+    // foo(5,'')
+    // foo(5 ,0)
+
+ /// 这个可以 有点绕
+ //    function bar(val) {
+ //        console.log(val)
+ //        console.log("bar called!");
+ //        return y + val;
+ //    }
+ //    function foo(x = y + 3, z = bar(x)){
+ //        console.log(x, z);
+ //    }
+ //
+ //    // var y = 5;
+ //    // foo();
+ //    // foo(10);
+ //    //
+ //    y = 6;
+ //    foo( undefined, 10)
+
+    // 你不知道的js  这个不太明白
+    var w = 1;
+    var z = 2;
+    function foo( x = w + 1, y = x + 1, z = z + 1 ){
+        console.log( x, y, z);
+    }
+    foo()
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

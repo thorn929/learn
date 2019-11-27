@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // var name = "jay"; //一看这二逼就是周杰伦的死忠粉
+    // var person = {
+    //     name: "kang",
+    //     pro: {
+    //         name: "Michael",
+    //         getName: function() {
+    //             return this.name;
+    //         }
+    //     }
+    // };
+    // console.log(person.pro.getName());
+    // var pepole = person.pro.getName;
+    // console.log(pepole());
+    // person.pro.getName()
+    //getName是调用者，他不是独立调用，被对象person.pro所拥有，
+    // 因此它的this指向了person.pro。而pepole()作为调用者，
+         /// 重点  重点  重点 重点
+    //        尽管他与person.pro.getName的引用相同，但是它是独立调用的，
+    //      因此this指向undefined，在非严格模式，自动转向全局window。
+
+
+
+
+
+    // var name = "jay"; //一看这二逼就是周杰伦的死忠粉
+    // var person = {
+    //     name: "kang",
+    //     pro: {
+    //         name: "Michael",
+    //         getName: function() {
+    //             console.log(this);
+    //             return this.name;
+    //         }
+    //     }
+    // };
+    // console.log(person.pro.getName());
+    // var pepole = person.pro.getName;
+    // console.log(pepole());
+
+
+
+    // var name = "jay";
+    // var person = {
+    //     name : "kang",
+    //     getName : function(){
+    //         return function(){
+    //             return this.name;
+    //         };
+    //     }
+    // };
+    // console.log(person.getName()());
+
+
+    //
+    // var name="jawil";
+    // var test={
+    //     name:'jay',
+    //     getName:function(){
+    //         console.log(name);
+    //         console.log(window.name)
+    //         console.log(this.name)
+    //     }
+    // }
+    // test.getName();
+
+
+    // var a = 20;
+    // function getA() {
+    //     console.log(this.a)
+    //     return this.a;
+    // }
+    // var foo = {
+    //     a: 10,
+    //     getA: getA
+    // }
+    // console.log(foo.getA());  // 10
+
+
+
+
+    // function foo() {
+    //     console.log(this.a)
+    // }
+    //
+    // function active(fn) {
+    //     fn(); // 真实调用者，为独立调用
+    // }
+    //
+    // var a = 20;
+    // var obj = {
+    //     a: 10,
+    //     getA: foo
+    // }
+    // active(obj.getA);
+
+
+
+    // Demo 1  这里不懂  不懂 不懂
+
+    // var a = 20;
+    // function fn() {
+    //     function foo() {
+    //         console.log(this.a);
+    //     }
+    //     foo();
+    // }
+    // fn();
+
+
+
+    // Demo 2
+    // var a = 20;
+    // var obj = {
+    //     a: 10,
+    //     c: this.a + 20,
+    //     fn: function () {
+    //         return this.a;
+    //     }
+    // }
+    //
+    // console.log(obj.c);
+    // console.log(obj.fn());
+
+
+
+    function Person(name, age) {
+
+        // 这里的this指向了谁?
+        this.name = name;
+        this.age = age;
+    }
+
+    Person.prototype.getName = function() {
+
+        // 这里的this又指向了谁？
+        return this.name;
+    }
+
+    // 上面的2个this，是同一个吗，他们是否指向了原型对象？
+
+    var p1 = new Person('Nick', 20);
+    p1.getName();
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

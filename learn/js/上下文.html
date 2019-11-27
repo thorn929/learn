@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    console.log(this);
+    console.log(this instanceof Object)
+
+    console.log(Math.random())
+    console.log(this.Math.random())
+
+    var a = 1;
+    console.log(this.a)
+    console.log(window.a)
+
+    this.window.b = 2;
+    console.log(this.b)
+
+
+
+    console.log(foo);
+
+
+    function foo(){
+        console.log("foo");
+    }
+
+    var foo = 1;
+
+
+
+</script>
+</body>
+</html>

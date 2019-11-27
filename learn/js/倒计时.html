@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 倒计时
+    dasharrayChange(time,thistime){
+        let _t = this;
+        this.$nextTick(()=>{
+            let _l = _t.$refs.widthA.clientWidth * Math.PI;
+            let pice =  _l / time;
+            let thistimetest = time - thistime;
+            console.log(thistimetest)
+            let thisTimeL = thistime * _l / time;
+
+            console.log(_l)
+            console.log(thisTimeL)
+
+            let timers = setInterval( () =>{
+                if((thistimetest > 0)){
+                    thisTimeL = thisTimeL + pice;
+                    _t.dasharray = `${_l - thisTimeL} ${thisTimeL} `;
+                    console.log(_t.dasharray)
+                    console.log(thistimetest--)
+                }else{
+                  console.log(this)
+//                clearInterval(timers)
+//                alert('去衣箱')
+//                this.goBackBox();
+                }
+            },1000)
+        })
+    }
+    dasharrayChange(11,322)
+
+    console.log(this)
+
+
+
+
+</script>
+</body>
+</html>

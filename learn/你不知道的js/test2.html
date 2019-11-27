@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">111</div>
+<script>
+        let _doc = document.getElementsByTagName("head")[0]
+        console.log(_doc)
+        let _script = document.createElement("script")
+        console.log(_script)
+
+        // _script.setAttribute("type","text/javascript");
+        _script.setAttribute("src","http://www.d.com");
+        // _doc.appendChild(_script);
+
+        let div1 = document.getElementById("div1");
+
+        div1.setAttribute("align", "center");
+
+
+</script>
+</body>
+</html>

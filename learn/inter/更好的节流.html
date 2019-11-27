@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<style>
+    div {
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+</style>
+</head>
+<div id="cli">点击</div>
+<script>
+  // 节流 用在重复点击   比如10秒内不论点击多少次 都执行一次
+  function throttle(fn, wait) {
+      let canRun = true; // 通过闭包保存一个标记
+      return (...args) => {
+        if (!canRun) return; // 在函数开头判断标记是否为true，不为true则return
+        canRun = false; // 立即设置为false
+        setTimeout(() => { // 将外部传入的函数的执行放在setTimeout中
+          fn.apply(fn, args)
+          // 最后在setTimeout执行完毕后再把标记设置为true(关键)表示可以执行下一次循环了。当定时器没有执行的时候标记永远是false，在开头被return掉
+          canRun = true;
+        }, wait);
+      };
+    }
+    function sayHi(e) {
+      console.log('点击了多少次')
+    }
+    let elem = document.getElementById('cli');
+    elem.addEventListener('click', throttle(sayHi, 2000));
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

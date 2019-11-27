@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // var str = 'hajshdjldjf';
+    // function count(str){
+    //     var obj = {};
+    //     for(var i = 0; i < str.length; i++){
+    //         if(obj[str[i]]){
+    //             obj[str[i]]++;
+    //         }else{
+    //             obj[str[i]] = 1;
+    //         }
+    //     }
+    //     console.log(obj);
+    //     // return obj;
+    // }
+    // count(str);
+
+    //
+    // var str = 'hajshdjldjf';
+    // function count(str){
+    //     var arr = [];
+    //     for(var i = 0; i < str.length; i++){
+    //         console.log(str)
+    //         console.log(str[])
+    //         // if(arr[str[i]]){
+    //         //     arr[str[i]]++;
+    //         // }else{
+    //         //     arr[str[i]] = 1;
+    //         // }
+    //     }
+    //     console.log(arr);
+    //     console.log(arr);
+    // }
+    // count(str);
+
+    var arr = [1,2,3,4,5,4,5,6,6,7,6,9,17,16,15,14,12,11];
+    //常规解法  利用对象的key值不能重复去计算次数
+    //res 去记录数字出现的顺序
+        // res 去记录数字出现的顺序
+    // res
+    function fn(arr){
+        arr.sort(function(a, b){
+            return a - b;
+        });
+        var res = [];
+        var resdetail = [];
+        for(var i = 0; i < arr.length; i++){
+            if(res.length === 0 || res[res.length-1] !== arr[i]){
+                res.push(arr[i]);
+                var obj = {
+                    key: arr[i],
+                    value: 1
+                };
+                resdetail.push(obj);
+
+            }else{
+                console.log(resdetail.length)
+                resdetail[resdetail.length-1].value++;
+            }
+        }
+        // console.log(resdetail);
+        return resdetail;
+    }
+    fn(arr);
+
+
+
+</script>
+</body>
+</html>

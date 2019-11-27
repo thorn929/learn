@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Point(x, y) {
+        this.x = x;
+        this.y = y
+    }
+
+    Point.prototype.toString = function () {
+        return (this.x)
+    }
+
+    var  p = new Point(1, 2)
+
+    p.toString()
+
+    console.log(p.__proto__.constructor === Point.prototype.constructor)
+
+    // class Point {
+    //     constructor(x, y) {
+    //         this.x = x;
+    //         this.y = y
+    //     }
+    //
+    //     toString() {
+    //         return console.log(thisf.x)
+    //     }
+    // }
+    //
+    // console.log(typeof Point)
+    // console.log(Point === Point.prototype.constructor)
+
+
+</script>
+</body>
+</html>

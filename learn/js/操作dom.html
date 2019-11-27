@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list"></ul>
+<script>
+
+    var ndContainer = document.getElementById('list');
+
+    for (var i = 0; i < 3; i++) {
+        var ndItem = document.createElement('li');
+        ndItem.innerText = i + 1;
+
+        // 这里是用的 addEventListtener  可以
+        ndItem.addEventListener('click', function () {
+            console.log(this.ndItem);
+        });
+        ndContainer.appendChild(ndItem);
+    }
+
+//   low的
+//     var  html = [];
+//     for ( var i = 1 ;i < 4; i++) {
+//         html.push('<li>'+(i)+'</li>')
+//     }
+//     console.log(html)
+//
+//     let  aa  = html.join('')
+//     console.log(aa)
+
+
+//     console.log(this)
+
+
+
+
+
+
+</script>
+</body>
+</html>

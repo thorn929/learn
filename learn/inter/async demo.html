@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+// demo 1
+  async function testAsync(){
+    return 'hello'
+  }
+
+  const  result = testAsync()
+  console.log(result)  // Promise {<resolved>: "hello"}
+
+  testAsync().then( v => {
+    console.log(v)
+  })
+
+  // demo 2
+
+    function getSomething() {
+      return "something";
+    }
+
+    async function testAsync() {
+      return Promise.resolve("hello async");
+    }
+
+    async function test() {
+      const v2 = await testAsync();
+      const v1 = await getSomething();
+
+      console.log(v2);
+      console.log(v1);
+    }
+
+    test();
+
+  // demo 3 =========
+    function takeLongTime() {
+      return new Promise(resolve => {
+        setTimeout(() => resolve("long_time_value"), 1000);
+      });
+    }
+
+    takeLongTime().then(v => {
+      console.log("got", v);
+    });
+
+    // 比较  -------
+    function takeLongTime() {
+      return new Promise(resolve => {
+        setTimeout(() => resolve("long_time_value"), 1000);
+      });
+    }
+
+    async function test() {
+      const v = await takeLongTime();
+      console.log(v);
+    }
+
+    test();
+
+
+    // 来看看 async / await 的优势在哪里吧   在于处理then 链
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

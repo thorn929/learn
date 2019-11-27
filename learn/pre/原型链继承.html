@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function Animal() {
+        this.type = 'Cat'
+        this.name = 'Nini'
+        this.hobbies = ['eat fish', 'play ball']
+    }
+    Animal.prototype.say = function () {
+        console.log('type is ' + this.type + ' name is ' + this.name);
+    }
+
+    function Cat() {
+        this.age = '1'
+    }
+    Cat.prototype = new Animal()
+    console.log(Cat.prototype)
+    Cat.prototype.constructor = Cat
+
+    let smallCat = new Cat()
+    smallCat.hobbies.push()
+
+    console.log(smallCat.hobbies); // [ 'eat fish', 'play ball', 'sleep' ]
+
+    smallCat.say() // type is Cat name is Nini
+
+    let bigCat = new Cat()
+    console.log(bigCat.hobbies) // [ 'eat fish', 'play ball', 'sleep' ]
+
+
+
+</script>
+</body>
+</html>

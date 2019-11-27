@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  let foo = [
+    {
+      name: "Stack",
+      age: 21
+    },
+    {
+      name: "Jarvis",
+      age: 20
+    },
+    {
+      name: "thorn",
+      age: 16
+    }
+  ]
+  // 要得到以下结果 so
+  let  resultDemo = [
+    {
+      person: {
+        name: 'Stack',
+        age: 21
+      },
+      friends: []
+    },
+    {
+      person: {
+        name: 'Jarvis',
+        age: 20
+      },
+      friends: []
+    }
+  ]
+
+
+   let result = []
+    foo.forEach((person) => {
+      if(person.age > 16){
+          let newItme = {
+            person: person,
+            friends: []
+          }
+          result.push(newItme)
+      }
+    })
+
+  console.log(result)
+
+  // 使用函数式的写法 优雅很多? 其实不是, 只是看起来像 =============--
+
+  let funResult = foo.filter(person => person.age > 16)
+    .map(person => ({
+      person: person,
+      friends: []
+    }))
+
+  console.log(funResult)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

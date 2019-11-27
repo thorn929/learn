@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+       async function checkHasLogined() {
+        const token  = 10
+        console.log(2)
+        if (!token) {
+          return false
+        }
+        // wx.checkSession({
+        //   fail() {
+        //     return false
+        //   }
+        // })
+        console.log(222)
+        const checkTokenRes = await WXAPI.checkToken(token)
+        if (checkTokenRes.code != 0) {
+          wx.removeStorageSync('token')
+          return false
+        }
+        return true
+      }
+      checkHasLogined()
+  </script>
+</body>
+</html>

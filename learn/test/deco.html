@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function compileStr(code){
+        var c=String.fromCharCode(code.charCodeAt(0)+code.length);
+        for(var i=1;i<code.length;i++){
+            c+=String.fromCharCode(code.charCodeAt(i)+code.charCodeAt(i-1));
+        }
+        return escape(c);
+    }
+
+    function uncompileStr(code){
+        code=unescape(code);
+        var c=String.fromCharCode(code.charCodeAt(0)-code.length);
+        for(var i=1;i<code.length;i++){
+            c+=String.fromCharCode(code.charCodeAt(i)-c.charCodeAt(i-1));
+        }
+        return c;
+    }
+
+    let a = compileStr("ddafdfadafddfasfdafdfsadfafddf")
+    console.log(a)
+    console.log(uncompileStr(a))
+
+
+</script>
+</body>
+</html>
