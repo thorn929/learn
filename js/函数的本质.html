@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 作为是对象
+    // function add(num1, num2) {
+    //     return num1 + num2;
+    // }
+    // add.sex = 'male' ;
+    // add.setSex = function (sex) {
+    //     this.sex = sex
+    // }
+    // console.log(add.sex)
+    // console.log(add.setSex('famale')) // undefined 没有返回值
+    // console.log(add.sex)
+    // console.log(add(1,2))
+
+    // 作为数据值使用
+    // 对象是数据 是值  函数也是  一个数据保存在 内存   对象保存在堆内存  大小不固定
+
+    // var person = {};
+    // var add = function () {
+    //     return 1;
+    // }
+    // // add()
+    // console.log(add())
+    // console.log(add)
+    //
+    // function ad () {
+    //
+    // }
+    // console.log(ad)
+
+    // 作为参数 定时器
+
+    //作为返回值
+
+    function fn(){
+        return function (){
+            console.log(1);
+        };
+    }
+
+
+    fn()()
+
+    var newFn = fn()
+    newFn()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

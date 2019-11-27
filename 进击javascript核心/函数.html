@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    ul li{
+        width:300px;
+        height:200px;
+        border:1px solid  red;
+        margin-bottom:10px;
+    }
+</style>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <div style="display:flex;flex-direction: column;">
+        <div>我的东西 我的东西 我的东西</div>
+        <div style="width:300px;height:300px;border:1px solid red">
+            <!--<img style="width:100%;height:100%;"class="imgLazyLoad" src="http://tu.yi23.net/brandPage/168-20180317_194448-1521287088965-1.jpg" />-->
+            <img style="width:100%;height:100%;"class="imgLazyLoad" />
+        </div>
+    </div>
+
+    <div style="display:flex;flex-direction: column;">
+        <div>我的东西 我的东西 我的东西</div>
+        <div style="width:300px;height:300px;border:1px solid red">
+            <!--<img style="width:100%;height:100%;"class="imgLazyLoad" src="http://tu.yi23.net/brandPage/168-20180317_194448-1521287088965-1.jpg" />-->
+            <img style="width:100%;height:100%;"class="imgLazyLoad" />
+        </div>
+    </div>
+
+    <div style="display:flex;flex-direction: column;">
+        <div>我的东西 我的东西 我的东西</div>
+        <div style="width:300px;height:300px;border:1px solid red">
+            <!--<img style="width:100%;height:100%;"class="imgLazyLoad" src="http://tu.yi23.net/brandPage/168-20180317_194448-1521287088965-1.jpg" />-->
+            <img style="width:100%;height:100%;"class="imgLazyLoad" />
+        </div>
+    </div>
+
+    <div style="display:flex;flex-direction: column;">
+        <div>我的东西 我的东西 我的东西</div>
+        <div style="width:300px;height:300px;border:1px solid red">
+            <!--<img style="width:100%;height:100%;"class="imgLazyLoad" src="http://tu.yi23.net/brandPage/168-20180317_194448-1521287088965-1.jpg" />-->
+            <img style="width:100%;height:100%;"class="imgLazyLoad" />
+        </div>
+    </div>
+
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <!--<img class="imgLazyLoad" data-src="http://tu.yi23.net/brandPage/168-20180317_194448-1521287088965-1.jpg" />-->
+<script>
+    (function(){//立即执行函数
+        let imgList = [
+            "http://tu.yi23.net/Thumbs/167-20171220_111313-1513739593545.jpg!750",
+            "http://tu.yi23.net/Thumbs/167-20171220_111313-1513739593545.jpg!750",
+            "http://tu.yi23.net/Thumbs/167-20171220_111313-1513739593545.jpg!750",
+            "http://tu.yi23.net/Thumbs/167-20171220_111313-1513739593545.jpg!750",
+            "http://tu.yi23.net/Thumbs/167-20171220_111313-1513739593545.jpg!750",
+            "http://tu.yi23.net/Thumbs/167-20171220_111313-1513739593545.jpg!750",
+            "http://tu.yi23.net/Thumbs/167-20171220_111313-1513739593545.jpg!750",
+            "http://tu.yi23.net/Thumbs/167-20171220_111313-1513739593545.jpg!750",
+            "http://tu.yi23.net/Thumbs/167-20171220_111313-1513739593545.jpg!750"
+        ],time = 250,offset = 0,canRun = true;
+        function _throttle() { //函数节流
+            if(!canRun) {
+                return;
+            }
+            canRun = false;
+            setTimeout(() => {
+                _loadImg();
+                canRun = true;
+            },time || 500)
+        }
+
+        function _loadImg(){//执行图片加载
+
+            for(let i = 0; i < imgList.length; i++){
+                if(_isShow(imgList[i])){
+                    console.log(i)
+                   imgList[i].src = imgList[i].getAttribute('data-src');
+
+                    imgList.splice(i,1);
+                }
+            }
+        };
+        function _isShow(el){//判断img是否出现在可视窗口
+            let coords = el.getBoundingClientRect();
+
+            return (coords.left >= 0 && coords.left >= 0 && coords.top) <= (document.documentElement.clientHeight || window.innerHeight) + parseInt(offset);
+        };
+        function imgLoad(selector){//获取所有需要实现懒加载图片对象引用并设置window监听事件scroll
+            _selector = selector || '.imgLazyLoad';
+            let nodes = document.querySelectorAll(selector);
+            imgList = Array.apply(null,nodes);
+            window.addEventListener('scroll',_throttle,false)
+        };
+        imgLoad('.imgLazyLoad')
+    })()
+</script>
+</body>
+</html>

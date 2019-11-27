@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  // 这个this 指向arr
+function fn (){ console.log(this) }
+var arr = [fn]
+arr[0]()
+/* 我们可以把 arr[0]( ) 想象为arr.0( )，虽然后者的语法错了，但是形式与转换代码里的 obj.child.method(p1, p2) 对应上了，于是就可以愉快的转换了：
+
+  arr[0]()
+  假想为    arr.0()
+  然后转换为 arr.0.call(arr)
+  那么里面的 this 就是 arr 了 :)
+*/
+var a = 1
+function test () {
+  console.log(this.a)
+}
+var obj = {
+  a: 2,
+  test
+}
+var testCopy = obj.test
+testCopy()
+
+var a = 1
+function test () {
+  console.log(this.a)
+}
+var obj = {
+  a: 2,
+  test
+}
+setTimeout(obj.test)
+
+
+var a = 1
+function test (a) {
+  this.a = a
+}
+var b = new test(2)
+console.log(b.a)
+
+var a = 1
+var test = () => {
+  console.log(this.a)
+}
+var obj = {
+  a: 2,
+  test
+}
+obj.test()
+
+
+
+var a = 1
+var test = () => {
+  console.log(this.a)
+  console.log(this.a)
+}
+var obj = {
+  a: 2,
+  test
+}
+var obj0 = {
+  a: 3,
+  obj
+}
+obj0.obj.test()
+
+
+</script>
+</body>
+</html>

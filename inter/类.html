@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*注：
+    class A {}
+    class B extends A {
+       constructor() {
+            super();  // ES6 要求，子类的构造函数必须执行一次 super 函数，否则会报错。
+        }
+    }
+    在 constructor 中必须调用 super 方法，因为子类没有自己的 this 对象，而是继承父类的 this 对象，然后对其进行加工,而 super 就代表了父类的构造函数。super 虽然代表了父类 A 的构造函数，但是返回的是子类 B 的实例，即 super 内部的 this 指的是 B，因此 super() 在这里相当于 ```A.prototype.constructor.call(this, props)``。
+
+
+    作者：戴宏兵
+    链接：https://juejin.im/post/5b4c0b26f265da0f6c7a82a1
+    来源：掘金
+    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+*/
+    //  es5  
+    // 动物
+const Animal = function(age) {
+  if (!(this instanceof Animal)) {
+    throw new Error('Instantiate Animal with `new`');
+  }
+  this.age = age;
+};
+Animal.prototype.move = function move() {};
+// 哺乳动物
+const Mammal = function(age, furColor) {
+  if (!(this instanceof Mammal)) {
+    throw new Error('Instantiate Mammal with `new`');
+  }
+  Animal.call(this, age);
+  this.furColor = furColor;
+};
+Mammal.prototype = Object.create(Animal.prototype);
+Mammal.prototype.constructor = Mammal;
+Mammal.prototype.liveBirth = function liveBirth() {};
+// 人类
+const Human = function(age, furColor, languageSpoken) {
+  if (!(this instanceof Human)) {
+    throw new Error('Instantiate Human with `new`');
+  }
+
+  Mammal.call(this, age, furColor);
+  this.languageSpoken = languageSpoken;
+};
+Human.prototype = Object.create(Mammal.prototype);
+Human.prototype.constructor = Human;
+Human.prototype.speak = function speak() {};
+
+
+
+// 
+// 动物
+class Animal {
+  constructor(age) {
+    this.age = age
+  };
+  move() {};
+}
+// 哺乳动物
+class Mammal extends Animal{
+  constructor(age, furColor) {
+    super(age);
+    this.furColor = furColor;
+  };
+  liveBirth() {};
+}
+// 人类
+class Human extends Mammal{
+  constructor(age, furColor, languageSpoken) {
+    super(age, furColor);
+    this.languageSpoken = languageSpoken;
+  };
+  speak() {};
+}
+
+
+</script>
+</body>
+</html>

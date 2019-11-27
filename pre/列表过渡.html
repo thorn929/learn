@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <style>
+        .v-enter,.v-leave-to{
+            opacity: 0;
+        }
+        .v-enter-active,.v-leave-active{
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <transition-group>
+        <div v-for="(item,index) of list" :key="index">{{item.title}}++{{item.id}}</div>
+    </transition-group>
+
+
+    <button @click="handle">add</button>
+</div>
+<script>
+    let count = 0;
+    let vm = new Vue({
+        el:"#root",
+        data:{
+            list:[]
+        },
+        methods:{
+            handle(){
+                this.list.push({
+                    id:count++,
+                    title:"Do you have a lighter"
+                })
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

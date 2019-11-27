@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function createfun(name,age){
+        var obj = new Object();  // 第一步
+
+        obj.name = name; // 第二部
+        obj.age = age;
+        obj.run = function(){
+            return this.name + '----' + this.age;
+        }
+        return obj //  最后  重要 ****
+    }
+
+    var box1 = createfun("张三",21)
+    console.log(box1.name)
+    var box2 = createfun("李四",44)
+    console.log(box2.name)
+    //  构造方式  和 工厂方式的不同
+// 构造不会显示创建对象 蒋属性赋值给this 不需要return 对象  是new的对象
+
+// 工厂创建obj 返回obj 属性方法都赋给 obj
+
+
+</script>
+</body>
+</html>

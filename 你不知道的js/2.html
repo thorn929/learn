@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 用for 因为第一次是为0   所以如果用for会导致多算一次附件的价格  而while 不是, </title>
+</head>
+<body>
+<script>
+
+    ///  用for 因为第一次是为0   所以如果用for会导致多算一次附件的价格  而while 不是,
+    /*
+    * 需求:
+    *   1. 编写程序以计算购买手机所需的总金额, 你需要一直购买手机, 直到银行账号中的资金不足. 而且.只要低于你的心理预期值. 那么就要为每个手机购买附件
+    *   2. 计算总金额后再加上税费, 然后以适当的格式打印出计算出的总金额
+    *   3. 最后, 检查银行账号余额, 确认是否能买得起
+    *   4. 你应该定义一些函数来计算税费, 格式化价格加上 $ 并保留两位数字
+    * */
+
+    const SPENGING_THRESHOLD = 200;
+    const TAX_RATE = 0.08;
+    const PHONE_PRICE =  99.3;
+    const ACCESSORY_PRICE =  9;
+
+    let balance = 442.22;
+    let amount = 0;
+
+    function calculateTax(amount){
+        return amount * TAX_RATE;
+    }
+
+    function formatAmount(amount){
+        return "$" + amount.toFixed(2);
+    }
+
+    ///  用for 因为第一次是为0   所以如果用for会导致多算一次附件的价格  而while 不是
+    for (amount;amount < balance; amount += PHONE_PRICE) {
+        if (amount < SPENGING_THRESHOLD) {
+            console.log(amount)
+            amount = amount + ACCESSORY_PRICE;
+        }
+    }
+    // 这样把他拿下来就好了
+    // for (amount;amount < balance; ) {
+    //     amount += PHONE_PRICE
+    //     if (amount < SPENGING_THRESHOLD) {
+    //         console.log(amount)
+    //         amount = amount + ACCESSORY_PRICE;
+    //     }
+    // }
+
+    //如果还有余额  那么继续购买手机
+    // while (amount < balance) {
+    //     // 购买新手机
+    //     amount = amount + PHONE_PRICE;
+    //
+    //     // 是否还能买附件
+    //     if (amount < SPENGING_THRESHOLD) {
+    //         console.log(amount)
+    //         amount = amount + ACCESSORY_PRICE;
+    //     }
+    // }
+
+    // 最后还得交税
+    amount = amount + calculateTax(amount)
+    console.log("你的购买金额 ----- " + formatAmount(amount));
+
+    // if (amount > balance) {
+    //     alert('你的余额不足以购买')
+    // }
+
+</script>
+</body>
+</html>

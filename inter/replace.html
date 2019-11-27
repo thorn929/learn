@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+
+
+var str="http://tu.yi23.net/20896/41-20180112_144828-1515739708402-1.jpg!840"
+let  a = str.replace(/http:\/\/tu\.yi23\.net([^"]+[png|jpe?g|gif|svg])(\!(\d+)w?)?/gi, (match, p1, p2, p3, p4) => {
+    console.log(match)
+    console.log(p1)
+    console.log(p2)
+    console.log(p3)
+
+      // const getOssProcessStr = function(width) {
+      //   let ossProcessStr = "?x-oss-process=image/resize,m_lfit,w_";
+      //   if (width) return (ossProcessStr += width);
+      //   return "";
+      // };
+
+  return `https://tu.95vintage.com${p1}${p3}`;
+})
+
+console.log(a)
+</script>
+</body>
+</html>

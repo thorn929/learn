@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Demo one
+    // function spacify(str){
+    //     return str.split('').join(' ')
+    // }
+    //
+    // console.log(spacify('hello world'))
+    //
+    // // 另一部分
+    // String.prototype.spacify = function(){
+    //     return this.split('').join(' ');
+    // };
+
+  //  Demo two
+  //   function log(){
+  //       var args = Array.prototype.slice.call(arguments);
+  //       args.unshift('(app)');
+  //
+  //       console.log.apply(this, args);
+  //   }
+  //
+  //   log('hellow' , 'world')
+
+    // Demo three
+
+    var User = {
+        count: 1,
+        getCount: function() {
+            return this.count;
+        }
+    };
+
+    console.log(User.getCount());
+
+    var func = User.getCount;
+    console.log(func());
+    // 上面会打印  1 和 undefined   因为 func 是在window中上下文中执行的  那怎么才能访问到呢?
+
+   // Please write down your answer  Right
+   // 因为bind是返回的是函数
+    var func = User.getCount.bind(User)
+    console.log(func())
+
+    // 但是这个方法 对于老版本不支持怎么办呢
+    Function.prototype.bind = Function.prototype.bind || function(context){
+        var self = this;
+        return function () {
+            return self.apply(context,arguments)
+        }
+    }
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

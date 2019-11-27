@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+    const fruits = [
+        { name: 'apple', color: 'red' },
+        { name: 'apple', color: 'red' },
+        { name: 'apple', color: 'red' },
+        { name: 'banana', color: 'yellow' },
+        { name: 'grape', color: 'purple' }
+    ];
+
+    function test() {
+        // 条件：（简短形式）所有的水果都必须是红色
+        const isAllRed = fruits.every(f =>
+
+            f.color == 'red'
+        );
+
+        console.log(isAllRed); // false
+    }
+   console.log(test("red"))
+
+
+</script>
+</body>
+</html>

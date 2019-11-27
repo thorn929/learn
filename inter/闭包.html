@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+   // 这里也是闭包??
+  var arr = [2,10,6,9,7,8];
+  var arr1 = arr.sort(function(a,b){
+    return a-b;
+  });
+  console.log(arr1);  //2，6，7，8，9，10
+  console.log(arr); //
+
+
+  // Demo  
+
+  // function count() {
+  //   var arr = [];
+  //   for (var i=1; i<=3; i++) {
+  //     arr.push(function () {
+  //       console.log(i)
+  //       return i * i;
+  //     });
+  //   }
+  //   return arr;
+  // }
+
+
+  //全部都是16！原因就在于返回的函数引用了变量i，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量i已经变成了4，因此最终结果为16。
+  //返回闭包时牢记的一点就是：返回函数不要引用任何循环变量，或者后续会发生变化的变量。
+
+   function count() {
+     var arr = [];
+     for (var i=1; i<=3; i++) {
+       console.log(i)
+       arr.push((function (n) {
+         return function () {
+           return n * n;
+         }
+       })(i));
+     }
+     return arr;
+   }
+
+  var results = count();
+  var f1 = results[0];
+  var f2 = results[1];
+  var f3 = results[2];
+  console.log(f1())
+  console.log(f2())
+  console.log(f3())
+</script>
+
+</body>
+</html>

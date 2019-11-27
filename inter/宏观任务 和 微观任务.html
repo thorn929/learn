@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+
+  setTimeout(function(){
+    console.log('定时器开始啦')
+  });
+
+  new Promise(function(resolve){
+    console.log('马上执行for循环啦');
+    for(var i = 0; i < 10000; i++){
+      i == 99 && resolve();
+    }
+  }).then(function(){
+    console.log('执行then函数啦')
+  });
+
+  console.log('代码执行结束');
+
+  /**
+   * setTimeout 是异步任务,被放到event table
+
+    new Promise 是同步任务,被放到主线程里,直接执行打印 console.log('马上执行for循环啦')
+
+    .then里的函数是 异步任务,被放到event table
+
+    console.log('代码执行结束')是同步代码,被放到主线程里,直接执行
+
+   */
+
+  /**
+   * 所以,结果是 【马上执行for循环啦 --- 代码执行结束 --- 定时器开始啦 --- 执行then函数啦】吗?
+
+     亲自执行后,结果居然不是这样,而是【马上执行for循环啦 --- 代码执行结束 --- 执行then函数啦 --- 定时器开始啦】
+
+     那么,难道是异步任务的执行顺序,不是前后顺序,而是另有规定? 事实上,按照异步和同步的划分方式,并不准确。
+   */
+
+  /**
+   *  而准确的划分方式是:
+      macro-task(宏任务)：包括整体代码script，setTimeout，setInterval
+      micro-task(微任务)：Promise，process.nextTick
+      按照这种分类方式:JS的执行机制是
+
+      执行一个宏任务,过程中如果遇到微任务,就将其放到微任务的【事件队列】里
+      当前宏任务执行完成后,会查看微任务的【事件队列】,并将里面全部的微任务依次执行完
+      重复以上2步骤,结合event loop(1) event loop(2) ,就是更为准确的JS执行机制
+   */
+
+
+
+</script>
+</body>
+</html>

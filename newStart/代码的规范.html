@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // bad
+    // function createMicbrewery(name) {
+    //     const  breweryName = 'taylor'
+    // }
+    //
+    // // good
+    // function createMicbrewery(breweryName = 'taylor') {
+    //
+    // }
+
+
+    // 函数参数 为多个时候
+        // bad
+    // function createMenu(title, body, buttonText, cancellable) {
+    //     console.log(title)
+    //     //     console.log(body)
+    //     //     console.log(buttonText)
+    // }
+    //
+    // // good
+    // createMenu(1,2,3)
+    // function createMenu(a){
+    //     console.log(a.title)
+    //     console.log(a.body)
+    //     console.log(a.buttonText)
+    // }
+    //
+    // let a = {
+    //     title:1,
+    // }
+    // createMenu(a)
+
+     // 重复代码
+      // bad
+    // function showDeveloperList(developers) {
+    //     developers.forEach(developer => {
+    //         const expectedSalary = developer.calculateExpectedSalary()
+    //         const experience = developer.getExperience()
+    //         const githubLink = developer.getGithubLink()
+    //         const data = {
+    //             expectedSalary,
+    //             experience,
+    //             githubLink,
+    //         }
+    //         render(data)
+    //     })
+    // }
+    //
+    // function showManagerList(managers) {
+    //     managers.forEach(manager => {
+    //         const expectedSalary = manager.calculateExpectedSalary()
+    //         const experience = manager.getExperience()
+    //         const portfolio = manager.getMBAProjects()
+    //         const data = {
+    //             expectedSalary,
+    //             experience,
+    //             portfolio,
+    //         }
+    //         render(data)
+    //     })
+    // }
+
+    // // good
+    // function showEmployeeList(employees) {
+    //     employees.forEach(employee => {
+    //         // const expectedSalary = employee.calculateExpectedSalary()
+    //         // const experience = employee.getExperience()
+    //         //
+    //         // const data = {
+    //         //     expectedSalary,
+    //         //     experience,
+    //         // }
+    //
+    //         switch (employee.type) {
+    //             case 'manager':
+    //                 data.portfolio = employee.getMBAProjects()
+    //                 break
+    //             case 'developer':
+    //                 data.githubLink = employee.getGithubLink()
+    //                 break
+    //         }
+    //
+    //         render(data)
+    //     })
+    // }
+    // showEmployeeList(manager)
+
+
+    // 避免副作用
+    // bad
+
+    //   let cart = [1,2,3];
+    //   let item = 4;
+    //     // const addItemToCart = (cart, item) => {
+    //     //     cart.push({ item, data: Date.now() })
+    //     //     console.log(cart)
+    //     // }
+    //
+    // // good
+    //     const addItemToCart = (cart, item) => {
+    //         return [...cart, { item, data: Date.now() }]
+    //     }
+    //
+    // console.log(addItemToCart(cart,item))
+
+    // example
+
+  let arr = [11, 22, 33];
+
+      // let tem = [...arr, 1]
+      // console.log(tem)
+      // console.log(arr)
+    let newArr = []
+        arr.push(1)
+        console.log(newArr)
+        console.log(arr)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

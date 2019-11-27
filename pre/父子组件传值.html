@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<div id="root">
+    <counter :count="3" @inc="handleIncrease"></counter>
+    <counter :count="2" @inc="handleIncrease"></counter>
+    <!--不加冒号是字符串  加上: 是数字 变成一个js表达式了  所以下面就算加2 也只是字符串的的加-->
+    <!--<counter count="1"></counter>-->
+    <div></div>
+    <div>{{total}}</div>
+</div>
+<body>
+<script>
+    let counter = {
+        props:["count"],
+        template:'<div @click="handleClick">{{number}}</div>',
+        data(){
+            return {
+                number : this.count
+            }
+        },
+        methods:{
+            handleClick(){
+                this.number = this.number +3
+                this.$emit("inc",3)
+            }
+        }
+    }
+
+    let vm = new Vue({
+        el:"#root",
+        data:{
+            total:5
+        },
+        components:{
+            counter
+        },
+        methods:{
+            handleIncrease(step){
+                console.log(step)
+                this.total += step
+            }
+        }
+    })
+</script>
+</body>
+</html>

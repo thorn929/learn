@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+  span {
+    color: red
+  }
+  </style>
+</head>
+<body>
+<script>
+let str = '本季度积分决定下季度等级，本季度已累积-750积Vv2分，预计下季ddd度等级，再得250积分v2可在111下季度继续享受V3等级；+定级规则+本季度积分解读图示；'
+
+// str = str.replace(/(\d+|V\d+)/g, function (str, p2) {
+
+function filterNumber(str){
+  return str.replace(/(\w+|-\d+)/g, function (str) {
+    return `<span>${str}</span>`
+  })
+}
+document.write(filterNumber(str))
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<body>
+<div id="root">
+    11数据类型
+</div>
+
+<script>
+
+    var vm = new Vue({
+        el: '#root',
+        methods:{
+            method_now(){
+                return Date.now()
+            }
+        },
+        computed:{
+            computed_now: function () {
+                return Date.now();
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+    <div id="cli">点击</div>
+<script>
+
+
+function debounce(fn, wait, immediate) {
+  let timer = null
+
+  return function() {
+    let args = arguments
+    let context = this
+
+    if (immediate && !timer) {
+      fn.apply(context, args)
+    }
+
+    if (timer) clearTimeout(timer)
+    timer = setTimeout(() => {
+      fn.apply(context, args)
+    }, wait)
+  }
+}
+
+function throttle(fn, wait, immediate) {
+  let timer = null
+  let callNow = immediate
+
+  return function() {
+    let context = this,
+      args = arguments
+
+    if (callNow) {
+      fn.apply(context, args)
+      callNow = false
+    }
+
+    if (!timer) {
+      timer = setTimeout(() => {
+        fn.apply(context, args)
+        timer = null
+      }, wait)
+    }
+  }
+}
+
+  // 当用户滚动时被调用的函数    
+  function foo() {
+    console.log('trouble i am in!');
+  }
+  // 在 debounce 中包装我们的函数，过 2 秒触发一次
+  let elem = document.getElementById('cli');
+  // elem.addEventListener('click', debounce(foo, 2000, true));
+  elem.addEventListener('click', throttle(foo, 2000, true));
+
+
+</script>
+
+</body>
+</html>

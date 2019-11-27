@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+   var a = 1
+   var b = 2[a,b] = [b,a]
+   console.log(b)
+
+    let arrayLike = {
+        '0': 'a',
+        '1': 'b',
+        '2': 'c',
+        length: 3
+    };
+
+    console.log(Object.values(arrayLike))
+    console.log([].slice.call(arrayLike))
+    console.log(Array.from(arrayLike))
+
+    Array.from('hello')
+    // ['h', 'e', 'l', 'l', 'o']
+
+    let namesSet = new Set(['a', 'b'])
+    console.log(namesSet)
+    console.log(Array.from(namesSet)) // ['a', 'b']
+
+
+
+</script>
+</body>
+</html>

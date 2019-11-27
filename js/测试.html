@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas</title>
+</head>
+
+<body>
+<canvas id="canvas" width="1000" height="1000"></canvas>
+<div>
+    <span id="_m">5 : </span>
+    <span id="_s">00</span>
+</div>
+<script type="text/javascript">
+
+    var currentSeconds = 6;
+    var countDownSeconds = 6;
+
+    var interval_id = setInterval("drawDoubleCircle()", 1000);
+
+    function drawDoubleCircle() {
+        if (currentSeconds <= 0) {
+            clearInterval(interval_id);
+        }
+        var canvasElement = document.getElementById('canvas');
+        var context = canvasElement.getContext('2d');
+        progress = 360 * currentSeconds / countDownSeconds;
+        console.log(progress)
+        progress_pi = Math.PI * (progress / 180 - 1 / 2);
+        context.beginPath();
+        context.moveTo(700, 400);
+        context.arc(700, 400, 80, 0, Math.PI * 2, false);
+        context.closePath();
+        context.fillStyle = 'blue';
+        context.fill();
+
+        context.beginPath();
+        context.moveTo(700, 400);
+        context.arc(700, 400, 80, -Math.PI * 1 / 2, progress_pi, false);
+        context.closePath();
+        context.fillStyle = 'red'
+        context.lineCap = 'round';
+        context.fill();
+
+        context.beginPath();
+        context.arc(700, 400, 65, 0, Math.PI * 2, false);
+        context.closePath();
+        context.fillStyle = 'white';
+        context.fill();
+
+        context.font = "bold 40pt Arial";
+        context.fillStyle = "red";
+        context.textAlign = "center";
+        context.textBaseline = 'middle';
+        // context.fillText(currentSeconds, 700, 400);
+        // 抗锯齿
+        context.globalCompositeOperation = 'source-atop';
+        currentSeconds--;
+    }
+
+
+    function countTime() {
+        var date = new Date();
+        var now = date.getTime();
+        var endDate = new Date("2018-8-14 19:59:00");//设置截止时间
+        var end = endDate.getTime();
+
+        var leftTime = end  - now; //时间差
+
+        console.log(leftTime)
+        var m, s;
+        if(leftTime >= 0) {
+            m = Math.floor(leftTime / 1000 / 60 % 60);
+            console.log(m)
+            s = Math.floor(leftTime / 1000 % 60);
+            console.log(s)
+            if(s < 10) {
+                s = "0" + s;
+            }
+            if(m < 10) {
+                m = "0" + m;
+            }
+        } else {
+            console.log('已截止')
+        }
+        //将倒计时赋值到div中
+        document.getElementById("_m").innerHTML = m + " : ";
+        document.getElementById("_s").innerHTML = s + "";
+        setTimeout(countTime, 1000);
+    }
+
+    // countTime();
+
+
+    console.log(this)
+
+
+    //
+    // var m = 4;
+    // var s = 59;
+    // function getCountdown (){
+    //     document.getElementById("_m").innerHTML = m + " : ";
+    //     document.getElementById("_s").innerHTML = s + "";
+    //     if( m == 0 && s == 0 ){
+    //         alert("倒计时结束");
+    //         m = 4;
+    //         s = 59;
+    //     }else if( m >= 0 ){
+    //         if( s > 0 ){
+    //             s--;
+    //         }else if( s == 0 ){
+    //             m--;
+    //             s = 59;
+    //         }
+    //     }
+    // }
+    // setInterval(getCountdown,1000);
+
+    // console.log(this)
+
+    console.log(this)
+
+
+
+
+</script>
+
+</body>
+</html>
+

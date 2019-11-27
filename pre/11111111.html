@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="arrow-right"> </div>
+<script>
+
+
+
+    var objUrldd="http://testwx.95vintage.com/yi23/Home/Activity/about_addClothesTicket?packageCode=5b05252d580fb260e63a6bbb507651&mobile=13520827837&example=13520827837"
+
+
+    function getQueryString(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        let newObj = objUrldd.split("?");
+        var r = newObj[1].match(reg);
+        console.log(r)
+        if (r != null) {
+            return unescape(r[2]);
+
+        }
+    }
+    function getQueryString1(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        console.log(r)
+        if (r != null) {
+            return unescape(r[2]);
+
+        }
+    }
+
+    console.log(getQueryString1("tab"))
+    let url = newObj[0].match(reg);
+    let url2 = '?packageCode'+getQueryString("packageCode");
+    if(getQueryString1("example")){
+        url2 += '?example'+getQueryString("example")
+    }
+
+
+    //name为去要取的参数，用字符串。
+</script>
+</body>
+</html>

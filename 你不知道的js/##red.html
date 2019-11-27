@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+    let fail2 = {
+      message: '现在支付即可享受¥50立减\n新人还可再减##¥200##对对对',
+    }
+    function textAction (text){
+      text.match(/([^#]+)([#]{2}([\s\S]*)[#]{2})?([\s\S]*)/)
+      console.log(RegExp.$1)
+       return {1: RegExp.$1, red: RegExp.$3, 2: RegExp.$4}
+    }
+    showMessage =  textAction(fail2.message)
+    console.log(showMessage)
+</script>
+</body>
+</html>

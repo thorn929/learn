@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    img{
+        width:100px;
+        height:150px;
+    }
+</style>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<div id="root">
+    <div class="gap-icon" >
+        <img :src="pic1" @mouseenter="showActive(0)" />
+        <br>
+        <img :src="pic2" @mouseenter="showActive(1)" />
+    </div>
+    <div>---===============---</div>
+    <div>
+        <img :src="picActive" />
+    </div>
+</div>
+<script>
+    let vm = new Vue({
+        el:"#root",
+        data:{
+            active:1,
+            pic:['http://tu.yi23.net/Thumbs/525-20171214_111455-1513221295493.jpg!300','http://tu.yi23.net/Thumbs/249-20180316_104625-1521168385927-1.jpg!300'],
+            pic1: 'http://tu.yi23.net/Thumbs/525-20171214_111455-1513221295493.jpg!300',
+            pic2: 'http://tu.yi23.net/Thumbs/249-20180316_104625-1521168385927-1.jpg!300',
+        },
+        computed: {
+            picActive: function () {
+                return this.pic[this.active]
+            },
+        },
+        methods:{
+            showActive(index) {
+                this.active = index;
+            }
+        },
+        created(){
+        }
+    })
+</script>
+</body>
+</html>

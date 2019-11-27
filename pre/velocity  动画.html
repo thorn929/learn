@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="root">
+    <transition  @before-enter="handleBeforeEnter"
+                @enter="handleEnter"
+                @after-enter="handleAfterEnter">
+        <div v-show="show">hello world</div>
+    </transition>
+
+    <button @click="handleClick">toggle</button>
+</div>
+<script>
+    let vm = new Vue({
+        el:"#root",
+        data:{
+            show:true
+        },
+        methods:{
+            handleClick(){
+                this.show = !this.show
+            },
+            handleBeforeEnter(el){
+                el.opacity = 0;
+            },
+            handleEnter(el,done){
+                Velocity(el,{opacity:1},{duration:3000,complete:done})
+            },
+            handleAfterEnter(el){
+                alert("动画完成")
+            }
+
+        }
+    })
+
+
+</script>
+</body>
+</html>

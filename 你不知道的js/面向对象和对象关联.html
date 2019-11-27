@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * 子类Bar 继承了 父类 Foo 然后生成了 b1 和 b2 两个实例 b1委托了 Bar.prototype  Bar.prototype委托了 Foo.prototype
+     * @param who
+     * @constructor
+     */
+    function Foo(who) {
+        this.name = who
+    }
+
+    Foo.prototype.identify = function (){
+        return " I am " + this.name
+    }
+
+    function Bar(who) {
+        Foo.call(this, who)
+    }
+
+    Bar.prototype = Object.create(Foo.prototype);
+
+    Bar.prototype.speak = function(){
+        console.log("hello" + this.identify() + '.')
+    }
+
+    var b1 = new Bar('b1')
+    var b2 = new Bar('b2')
+
+    b1.speak()
+    b2.speak()
+
+
+    //  ###   这里是指的  c1 委托给_Bar看好!!!!!
+    console.log('===========================')
+    /**
+     * 對象关联  利用prototype把c1 委托给Bar 并把Bar委托给Foo. 和上一段一样 仍然实现了 三个对象之间的关联
+     * @type {{init: Other.init, identify: Other.identify}}
+     */
+
+    _Foo = {
+        init: function(who){
+            this.me = who
+        },
+        identify: function(){
+            return "I am" + this.me
+        }
+    }
+
+    _Bar = Object.create(_Foo)
+
+    _Bar.speak = function() {
+        console.log('Hello, ' + this.identify() + ".")
+    }
+
+    var c1 = Object.create(_Bar)
+    c1.init('c1')
+    var c2 = Object.create(_Bar)
+    c2.init('c2')
+
+    c1.speak()
+    c2.speak()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

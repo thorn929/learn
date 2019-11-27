@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+    const flattenDeep = arr => Array.isArray(arr) ? arr.reduce( (a, b) => [...a, ...flattenDeep(b)] , []) : [arr]
+
+
+  console.log(flattenDeep([1, [[2], [3, [4]], 5]]))
+
+
+
+   let  a = [1, 2, 2, 1], b = [2, 2];
+   let union = a.filter(v => b.includes(v))
+    console.log(union)
+</script>
+
+</body>
+</html>

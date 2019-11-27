@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table id="div1" style="height:80px; width:800px; background:black">
+    <input type="button" value="第一个按钮" onclick="mychange()" />
+</table>
+<script>
+    var num = 1;
+    function mychange() {
+        if (num == 1) {
+            document.getElementById("div1").style.background="blue";
+            num = 0;
+        } else {
+            document.getElementById("div1").style.background="red";
+            num = 1;
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

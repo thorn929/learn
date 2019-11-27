@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   // 一般原型链的方法
+   //  function Person(name,age){
+   //      this.name = name;
+   //      this.age = age;
+   //  }
+   //
+   //  Person.prototype.say = function(){
+   //      console.log('my name is ' + this.name + ' , '+ this.age+ ' years old');
+   //  }
+   //
+   // // for(var prop in Person.prototype){
+   // //     console.log(prop)
+   // // }
+   //  var person = new Person('Thorn' , 19)
+   //  person.say();
+
+    // console.log(Person)
+    // console.log(Person.prototype)
+    // console.log(person)
+
+
+   // -------------------------------------
+    //  es6  class
+
+    // class Person {
+    //     constructor(name,age){
+    //         this.name = name;
+    //         this.age = age;
+    //     }
+    //     say(){
+    //         console.log('my name is ' + this.name + ' , '+ this.age+ ' years old');
+    //     }
+    // }
+    //
+    //
+    // var person = new Person('thorn',22);
+    // person.say();
+
+    // 类 表达式
+
+    // var demo = class {
+    //      constructor(name,age){
+    //          this.name = name;
+    //          this.age = age;
+    //      }
+    //      say(){
+    //          console.log('my name is ' + this.name + ' , '+ this.age+ ' years old')
+    //      }
+    // }
+    // console.log(demo)
+    // var person = new demo('coco',121);
+    // person.say();
+
+    // ==================  Es6
+    // 类继承  类之间的继承 可以通过 extends关键字实现  先定义一个父类
+   class Point{
+       constructor(x, y){
+           this.x = x;
+           this.y = y;
+       }
+       toString(){
+           return '点坐标: ' + this.x + ',' + this.y;
+       }
+   }
+   let fp = new Point(12, 34);
+   console.log(fp.toString()); //"点坐标: 12,34"
+
+    // 接着是子类的声明
+
+   class ColoredPoint extends Point{
+       constructor(x, y, color){
+           super(x, y);
+           this.color = color;
+       }
+       toString(){
+           return this.color + super.toString();
+       }
+   }
+   let sp = new ColoredPoint(56, 78, '红色');
+   console.log(sp.toString()); //"红色点坐标: 56,78"
+
+   /*
+    *   这个子类的构造函数中出现了一个新的关键字super
+    *   没有它的话，就无法继承父类的实例属性
+    *  （子类中有constructor，内部就要有super）
+    *  （子类没有自己的this对象，需要继承父类的this对象再添加东西）
+    *   super指代父类的实例（父类的this对象）
+    *   这里的super(x,y)就是调用父类的构造函数
+    *   super.toString()就是调用父类toString()方法
+    */
+
+
+     // 已下Es5  没看懂
+
+
+    // ----- Es5
+    // function ColoredPoint(x,y){
+    //     Point.apply(this, [x,y]);
+    // }
+    // ColoredPoint.prototype = Object.create(Point.prototype,{
+    //     toString: function() {
+    //         return '点坐标: ' + this.x + ',' + this.y;
+    //     }
+    // });
+    // ColoredPoint.prototype.constructor = ColoredPoint;
+    // /*
+    // * ES5的继承，
+    //     实质是先创造子类的实例对象this
+    //     然后再将父类的方法添加到this上面（Parent.apply(this)）
+    //
+    //     ES6的继承，
+    //     实质是先创造父类的实例对象this（必须先调用super）
+    //     然后再用子类的构造函数修改this
+    //
+    //     它们的实现机制是不同的
+    // */
+    //
+    //
+    // // 静态方法
+    // /*
+    // * 类相当于实例中的原型
+    // * 所有类中定义的方法都会被实例继承
+    // * 如果再类方法前加上static
+    // * 就不会被实例继承,而是直接通过类调用
+    // */
+    // class Foo{
+    //     static print(){
+    //         return 'hello world'
+    //     }
+    // }
+    //
+    // console.log(Foo.print())
+    // // 静态方法也可以从super 调用
+    // // 子类调用父类的static 方法 也只能在静态函数中调用
+    //
+    // class Bar extends Foo{
+    //     static say(){
+    //         return super.print();
+    //     }
+    // }
+    //
+    // let b =new Bar();
+    // console.log(Bar.print());
+    // console.log(Bar.say());
+    // console.log(b.say())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

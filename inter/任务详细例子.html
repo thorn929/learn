@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+    console.log("1");
+    setTimeout(()=>{
+      console.log(2)
+      Promise.resolve().then(()=>{
+        console.log(3);
+        process.nextTick(function foo() {
+          console.log(4);
+        });
+      })
+    })
+    Promise.resolve().then(()=>{
+      console.log(5);
+      setTimeout(()=>{
+        console.log(6)
+      })
+      Promise.resolve().then(()=>{
+        console.log(7);
+      })
+    })
+
+    process.nextTick(function foo() {
+      console.log(8);
+      process.nextTick(function foo() {
+        console.log(9);
+      });
+    });
+    console.log("10")
+
+    /**
+     * 执行顺序：
+     1，输出1
+     2，将setTimeout（2）push进宏任务
+     3，将then（5）push进微任务
+     4，在执行栈底部添加nextTick（8）
+     5，输出10
+     6，执行nextTick（8）
+     7，输出8
+     8，在执行栈底部添加nextTick（9）
+     9，输出9
+     10，执行微任务then（5）
+     11，输出5
+     12，将setTimeout（6）push进宏任务
+     13，将then（7）push进微任务
+     14，执行微任务then（7）
+     15，输出7
+     16，取出setTimeout（2）
+     17，输出2
+     18，将then（3）push进微任务
+     19，执行微任务then（3）
+     20，输出3
+     21，在执行栈底部添加nextTick（4）
+     22，输出4
+     23，取出setTimeout（6）
+     24，输出6
+        最后结果是：1，10，8，9，5，7，2，3，4，6
+
+     链接：https://juejin.im/post/5a6309f76fb9a01cab2858b1
+     */
+
+
+
+
+</script>
+</body>
+</html>

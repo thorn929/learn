@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function compareVersion(current, target) {
+        const arr_current = current.split('.')
+        const arr_target = target.split('.')
+        // while (arr_current.length < arr_target.length) {
+        //     arr_current.push('0')
+        // }
+        // while (arr_target.length < arr_current.length) {
+        //     arr_target.push('0')
+        // }
+         arr_current.forEach((item, i) => {
+           if (arr_current[i] !== arr_target[i]) {
+               console.log(arr_current[i])
+               return console.log(arr_current[i] >= arr_target[i])
+           }
+        })
+        // for (let i = 0; i <= arr_current.length; i++) {
+        //     if (arr_current[i] !== arr_target[i]) {
+        //         // console.log(arr_current[i])
+        //         // console.log(arr_current[i] >= arr_target[i])
+        //         return arr_current[i] >= arr_target[i]
+        //     }
+        // }
+    } 
+    let version = '3.2.1'
+    // 当前版本是否大于 3.1.1
+    console.log(compareVersion(version,'3.1.1'))
+
+    // let versionList = version && version.split('.').length > 1 ? version.split('.') : ''
+    //   if (versionList && (+versionList[0] > 3 || (versionList[0] == 3 && +versionList[1] > 1) || (versionList[0] == 3 && versionList[1] == 1 && +versionList[2] >= 1))){
+    //     console.log('true')
+    //   } else {
+    //       console.log('false')
+    //   }
+
+
+
+//     checkAppVersion(now,target){
+
+// let nowArr = now.split('.').map((cur,i)=>{return cur.length >=2 ? cur+'' : '0'+ cur}).join('');
+// let targetArr = target.split('.').map((cur,i)=>{return cur.length >=2 ? cur+'' : '0'+ cur}).join('');
+
+// return nowArr >= targetArr;
+// },
+</script>
+</body>
+</html>

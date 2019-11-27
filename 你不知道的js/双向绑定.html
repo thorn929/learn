@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="text" id="inp"/>
+<div id="text">我是测试数据的</div>
+
+<script type="text/javascript">
+    // this is document cancel
+    const inp = document.getElementById("inp"),
+          tex = document.getElementById("text"),
+          data = {}; //获取两个元素
+
+        Object.defineProperty(data,'test', {
+            get:function(){
+               return inp.value
+            },
+            set:function(newData){
+                tex.innerHTML= newData
+            }
+        })
+    console.log('this  is  data ')
+    console.log(this.value)
+        inp.addEventListener('keyup',function(e){
+            data.test = this.value
+        })
+
+
+
+
+</script>
+</body>
+</html>

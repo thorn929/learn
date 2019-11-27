@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function extend(target) {
+        let sources = Array.prototype.slice.call(arguments, 1);
+        for (let i = 0; i < sources.length; i ++) {
+            for (let key in sources[i]) {
+                if (sources[i].hasOwnProperty(key)) {
+                    target[key] = sources[i][key]
+                }
+            }
+        }
+        console.log(target)
+        // return target
+    }
+
+    let a = {
+        aa:11
+    }
+    let b = {
+        bb:22
+    }
+    // let c = {
+    //     cc:11,
+    //     dd: {
+    //         dd: 22
+    //     }
+    // }
+   extend({}, a, b)
+</script>
+</body>
+</html>

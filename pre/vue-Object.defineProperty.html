@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    你好，<span id='nickName'></span>
+         <div id="introduce"></div>
+</div>
+<script>
+    // var obj = {};
+    // Object.defineProperty(obj, 'hello', {
+    //     // 有人说 wriable 和 set get 不能同时用会报错 这不是没有吗  不是这个意思?
+    //     wriable:true,
+    //     get: function() {
+    //         console.log('get方法获取值');
+    //     },
+    //     set: function(val) {
+    //         console.log('set方法设置的值为：' + val);
+    //     }
+    // });
+    //
+    // obj.hello; // get方法获取值
+    // obj.hello = 'Hello World'
+    //
+    // var a = {};
+    // Object.defineProperty(a, 'b', {
+    //     value: 123
+    // });
+    // console.log(a.b);
+
+    // --------------------------------Start-------------------------------
+    // New demo
+    // var a = {};
+    // Object.defineProperty(a,'b',{
+    //     set:function(newValue){
+    //         // 这里是 1
+    //         console.log('你要赋值给我,我的新值是: ' + newValue);
+    //     },
+    //     get:function(){
+    //         console.log('你取我的值');
+    //         return 2; // 注意这里  我硬编码返回2
+    //     }
+    // });
+    // a.b = 1; // 打印 你要赋值给我, 我的新值是1
+    // console.log(a.b) // 打印 你取我的值2
+
+    // Demo three
+    // 视图控制器
+    // var userInfo = {};
+    // Object.defineProperty(userInfo, "nickName", {
+    //     get: function() {
+    //         // return document.getElementById('nickName').innerHTML;
+    //     },
+    //     set: function(nick) {
+    //         document.getElementById('nickName').innerHTML = nick;
+    //     }
+    // });
+    // Object.defineProperty(userInfo, "introduce", {
+    //     get: function() {
+    //         // return document.getElementById('introduce').innerHTML;
+    //     },
+    //     set: function(introduce) {
+    //         document.getElementById('introduce').innerHTML = introduce;
+    //     }
+    // });
+    //
+    // userInfo.nickName = "xxx";
+    // userInfo.introduce = "我是xxx，我来自云南，..."
+
+    /// Demo six  这里例子好
+    // var person = {
+    //     a:1
+    // };
+    // Object.defineProperty(person,'a',{
+    //     get(){
+    //         return 3 //当访问这个属性的时候返回3
+    //     },
+    //     set(val){
+    //         console.log(val) //当设置这个属性的时候执行,val是设置的值
+    //     }
+    // })
+    // console.log(person.a)  // 3,我们明明写的是a:1,怎么返回的3呢?这就是get()的威力了
+    // person.a = 5 // 5,相应的设置的时候执行了set()函数
+    //
+
+
+    //  Demo seven
+    // var person = {
+    //     a:1
+    // }
+    // // 注: 里面的this指向obj(person)
+    // Object.defineProperty(person,'a',{
+    //     get() {
+    //         return this.a
+    //     },
+    //     set(val){
+    //         this.a = val
+    //     }
+    // })
+    // console.log(person.a) // 这样会报错 Uncaught RangeError: Maximum call stack size exceeded
+    // 这样写溢出了  为什么
+    // 因为这样写 会造成循环引用 狂call不止
+    // 流程 person.a -> get.call(person) -> this.a -> get.call(person) -> this.a
+
+    // 我们改一下
+
+            // 👇
+   // 里面重新定义了一个属性 这是重点    而且下面新增加属性 用本身不行因为会报错 call 的
+   //  var person = {
+   //      a:1
+   //  }
+   //  Object.defineProperty(person,'a',{
+   //      get(){
+   //          // 这里定义一个新属性 然后加个默认值 defineProperty 第二个值为 "a"
+   //          return this._b || 1
+   //      },
+   //      set(val){
+   //          this._b = val
+   //      }
+   //  })
+   //  console.log(person.a)
+   //  person.a = 2
+   //  console.log(person.a)
+   //  console.log(person)
+
+    //
+    // var book = {
+    //     _year: 2004,
+    //     edition:1
+    // };
+    //
+    // Object.defineProperty(book,'year',{
+    //     get:function(){
+    //         return this._year;
+    //     },
+    //     set:function(newValue){
+    //         if(newValue > 2004){
+    //             this._year = newValue;
+    //             this.edition += newValue - 2004;
+    //         }
+    //     }
+    // })
+    //
+    // book.year = 2005;
+    // console.log(book.edition)
+    // console.log(book.year)
+    // console.log(look)
+
+
+
+    var obj = new Object();
+    Object.defineProperties(obj, {
+        name: {
+            value: '张三',
+            configurable: false,
+            writable: true,
+            enumerable: true
+        },
+        age: {
+            value: 18,
+            configurable: true
+        }
+    })
+
+    console.log(obj.name, obj.age) // 张三, 18
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

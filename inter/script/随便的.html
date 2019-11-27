@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+@keyframes bounceInUp {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  from {
+    opacity: 0;
+    transform: translate3d(0, 3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, 10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -5px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+@keyframes rightan {
+  from {
+    opacity: 1;
+    transform: translate3d(-50%, -20px, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.rightan {
+  animation: rightan 1s infinite;
+  animation-fill-mode: both;
+}
+
+</style>
+<body>
+<script>
+function fn1(){
+    for(var i=0;i<4;i++){
+      var tc= setTimeout(function(J){
+        console.log(J);
+        console.log(tc)
+        /// 这里有个延时器
+        clearTimeout(tc)
+      },1000, i);
+
+    }
+  }
+  fn1()
+
+    // 请注意：这个tc是定义在闭包外面的，也就是说tc并没有被闭包保存，所以这里的tc指的是最后一个循环留下来的tc，所以最后一个3被清除了，没有输出。
+</script>
+</body>
+</html>

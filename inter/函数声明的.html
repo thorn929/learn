@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function t1(){
+    console.log("1");
+  }
+  t1();
+
+  function t1(){
+    console.log("2");
+  }
+  t1();
+
+  var t1 = function(){
+    console.log("3");
+  }
+  t1();
+
+  var t1 = function (){
+    console.log("4");
+  }
+  t1();
+
+    /* 就是下面的
+        function t1(){
+          console.log("t1");
+        }
+        function t1(){
+            console.log("new t1");
+        }
+        t1();
+        t1();
+
+        var t1 = function(){
+            console.log("new new t1");
+        }
+        t1();
+
+        var t1 = function (){
+            console.log("new new new t1");
+        }
+        t1();
+     */
+
+
+
+
+
+</script>
+</body>
+</html>

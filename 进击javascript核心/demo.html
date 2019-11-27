@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<script>-->
+    <!--// class Person {-->
+    <!--//-->
+    <!--// }-->
+    <!--//-->
+    <!--// Person.getInstance = (function () {-->
+    <!--//         console.log('我被执行了')-->
+    <!--//     let instance-->
+    <!--//     return function () {-->
+    <!--//             if (!instance) {-->
+    <!--//                 instance = new Person();-->
+    <!--//             }-->
+    <!--//             return instance-->
+    <!--//     }-->
+    <!--// })()-->
+    <!--//-->
+    <!--// let p1 = Person.getInstance();-->
+    <!--// let p2 = Person.getInstance();-->
+    <!--// console.log(p1 == p2)-->
+    <!--console.log(Array.of(1,2))-->
+<!--</script>-->
+<script>
+      let  resDate = [
+          {
+              date:'2018',
+              period:"10:00-12:00|13:00-18:00"
+          },
+          {
+              date:'2019',
+              period:"10:00-12:00|13:00-18:00"
+          },
+      ]
+    let dateData= resDate.map(item => {
+        item.val=item.date;
+        item.date=[];
+        // let data=item.period.split('|')
+        // console.log(data)
+        // for(let i = 0; i<data.length;i++ ) {
+        //     let vals={val:data[i]}
+        //     item.date.push(vals)
+        // }
+        // delete item.period
+        return item
+    })
+    console.log(dateData)
+
+
+</script>
+</body>
+</html>
