@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function createFun(propertyName){
+        return function(object1, object2){
+            var value1 = object1[propertyName]
+            var value2 = object2[propertyName]
+            if (value1 < value2) {
+                return -1
+            } else if (value1 > value2){
+                return 1
+            } else {
+                return 0
+            }
+        }
+    }
+
+    var data = [
+        {
+            name: "张三",
+            age: 38
+        },
+        {
+            name: '李四',
+            age: 22
+        },
+        {
+            name: 'thorn',
+            age: 24
+        }
+    ]
+
+    data.sort(createFun("age"))
+    console.log(data)
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var obj = {
+        id: 'awesome',
+        cool: function coolFn(){
+            console.log(this.id)
+        }
+    }
+
+    var id = 'not awesome'
+
+    // obj.cool()
+    console.log(obj.cool)
+
+
+    let str = 'encodeURI'
+    console.log(encodeURI(str))
+    console.log(decodeURI(str))
+
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .rotate_con {
+        margin: 50px auto;
+        width: 320px;
+        height: 320px;
+        border: 1px solid #FFFFFF;
+        border-radius: 50%;
+    }
+
+    .rotate_row {
+        display: flex;
+        display: -webkit-flex;
+        height: 33.3333333%;
+    }
+
+    .rotate_item {
+        flex: 0 0 33.3333333%;
+        -webkit-flex: 0 0 33.3333333%;
+        line-height: 106.666666px;
+        text-align: center;
+        background: yellow;
+        padding: 1px;
+        border: 1px solid #fff;
+        box-sizing: border-box;
+    }
+
+    .item_start {
+        position: relative;
+        background-color: #FF5E5E;
+        color: #FFFFFF;
+        font-weight: bold;
+        cursor: pointer
+    }
+
+    .item_start:active {
+        background: #ED745B;
+    }
+
+    .rotate {
+        position: absolute;
+        width: 5px;
+        height: 106px;
+        top: -53px;
+        left: 53px;
+        background: #fff;
+        transform: rotateZ(0deg);
+        transform-origin: left bottom;
+        -webkit-transform-origin: left bottom;
+        transition: all 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .item_active {
+        border-color: red;
+    }
+</style>
+<body>
+<div class="rotate_con">
+    <div class="rotate_row">
+        <div class="rotate_item">
+            RMB100
+        </div>
+        <div class="rotate_item">
+            流量100M
+        </div>
+        <div class="rotate_item">
+            谢谢参与
+        </div>
+    </div>
+    <div class="rotate_row">
+        <div class="rotate_item">
+            再接再厉
+        </div>
+        <div class="rotate_item item_start" id="start">
+            开始
+            <div class="rotate" id="rotate_zhen">
+
+            </div>
+        </div>
+        <div class="rotate_item">
+            RMB2
+        </div>
+    </div>
+    <div class="rotate_row">
+        <div class="rotate_item">
+            RMB100
+        </div>
+        <div class="rotate_item">
+            谢谢参与
+        </div>
+        <div class="rotate_item">
+            流量100M
+        </div>
+    </div>
+</div>
+<script>
+    //获取对象
+    var getid = function(id) {
+        return document.getElementById(id);
+    };
+    //按照旋转顺序的数组
+    var context = ["流量100M", "谢谢参与", "RMB2", "流量100M", "谢谢参与", "RMB100", "再接再厉", "RMB100"];
+    var deg = 45, //旋转的默认角度360/8
+        numdeg = 0, //记录上次旋转停止时候的角度
+        num = 0, //记录旋转后数组的位置
+        isRotated = false; //判断是否在进行中
+    window.onload = function() {
+        var zhen = getid("rotate_zhen");
+        getid("start").addEventListener('click', function() {
+            if(isRotated) return; //如果正在旋转退出程序
+            isRotated = true;
+            var index = Math.floor(Math.random() * 8); //得到0-7随机数
+            num = index + num; //得到本次位置
+            numdeg += index * deg + Math.floor(Math.random() * 3 + 1) * 360;
+            zhen.style.webkitTransform = zhen.style.transform = "rotateZ(" + numdeg + "deg)";
+            setTimeout(function() {
+                if(num >= 8) { //如果数组位置大于7就重新开始
+                    num = num % 8;
+                }
+                alert(context[num]);
+                isRotated = false; //旋转改为false说明没有旋转
+            }, 1700)
+        }, false)
+    }
+</script>
+</body>
+</html>

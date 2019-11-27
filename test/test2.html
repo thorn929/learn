@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+
+    </script>
+</head>
+<body>
+<script>
+
+    function Foo(who){
+        this.name = who
+    }
+    Foo.prototype.identify = function() {
+        return "I am " + this.name
+    }
+
+    function Bar(who) {
+        Foo.call(this, who)
+    }
+
+    Bar.prototype = Object.create(Foo.prototype)
+
+    Bar.prototype.speak = function(){
+        console.log(this.identify())
+    }
+    let a1 = new Bar("thorn")
+
+    // console.log(a1)
+    a1.speak()
+
+
+</script>
+</body>
+</html>

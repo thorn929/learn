@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+<script>
+    // function foo() {
+    //     var a = 2;
+    //
+    //     function baz() {
+    //         console.log(a);
+    //     }
+    //
+    //     bar(baz)
+    //     ba()
+    // }
+    // // foo()
+    //
+    // function bar(fn) {
+    //     fn()
+    // }
+    //
+    // function ba() {
+    //     console.log(11)
+    // }
+
+    function wait(message) {
+        setTimeout( function timer(){
+            console.log(message)
+        },1000)
+    }
+
+    wait('hello world')
+
+
+
+</script>
+</body>
+</html>

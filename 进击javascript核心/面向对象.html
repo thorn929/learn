@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象</title>
+</head>
+<body>
+<script>
+
+    // // 闭包
+    function f1(){
+        var n = 999;
+        // 这种写法
+        nAdd = function (){
+            console.log('111')
+            n = n + 1;
+        }
+        this.fun = function (){
+            console.log('2222')
+        }
+        function f2(){
+            console.log(n)
+        }
+        return f2;
+    }
+
+    var fs = f1()
+    // fs()
+    nAdd(); // 看这里
+    fun()  // 看这里
+    // fs();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

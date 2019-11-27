@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     *  代理模式预加载
+     *    给img节点设置src和图片预加载这两个功能，被隔离在两个对象里，它们可以各自变化而不影响对方，就算有一天我们不需要预加载，那么只需要改成请求本体而不是请求代理就好了
+     *    实际上是给系统添加了新的行为，符合开放-封闭原则
+     */
+    /*
+    let myImage = (function() {
+      let imgNode = document.createElement('img')
+      document.body.appendChild(imgNode)
+      return {
+        setSrc: function(src) {
+          imgNode.src = src
+        }
+      }
+    })()
+    let proxyImage = (function() {
+      let img = new Image
+      img.onload = function() {
+        myImage.setSrc(this.src)
+      }
+      return {
+        setSrc: function(src) {
+          myImage.setSrc('https://tu.95vintage.com/logservice/91-20190627_123954-1561610394921-1.jpg')
+          setTimeout(function() {
+            img.src = src
+          }, 1000)
+        }
+      }
+    })()
+    proxyImage.setSrc('https://tu.95vintage.com/Thumbs/979-20190912_181804-1568283484408-1.jpg')
+    */
+    
+    // 不用代理的预加载图片函数实现
+    let MyImage = (function() {
+      let imgNode = document.createElement('img')
+      document.body.appendChild(imgNode)
+      let img = new Image
+      img.onload = function() {
+        imgNode.src = img.src
+      }
+      return {
+        setSrc: function(src) {
+          imgNode.src = 'https://tu.95vintage.com/logservice/91-20190627_123954-1561610394921-1.jpg'
+          setTimeout(function() {
+            img.src = src
+          }, 1000)
+        }
+      }
+    })()
+
+    MyImage.setSrc('https://tu.95vintage.com/Thumbs/979-20190912_181804-1568283484408-1.jpg')
+
+  </script>
+</body>
+</html>

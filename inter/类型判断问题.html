@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+/**
+ * type
+ *
+ * @desc 针对部分常见类型给予更好的输出方式
+ * @param {Object} obj 传入的对象
+ * @return {string} 类型字符串
+ */
+function type(obj) {
+  const typeofResult = typeof obj;
+  console.log(typeofResult)
+  if (typeofResult !== 'object') {
+    return typeofResult;
+  }
+  else if (obj === null) {
+    return 'null';
+  }
+  else if (Array.isArray(obj)) {
+    return 'Array';
+  }
+  else if (obj instanceof RegExp) {
+    return 'RegExp';
+  }
+  else if (obj instanceof Date) {
+    return 'Date';
+  }
+  return 'Object';
+}
+
+console.log(type(null))
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<div>
+    <h5>6</h5>
+    <h5>7</h5>
+    <h5>8</h5>
+</div>
+<body>
+<script>
+    let foo = (function CoolModule(id) {
+        function change() {
+            publicAPI.identify = identify2;
+        }
+        function identify1() {
+            console.log(id)
+        }
+        function identify2(){
+            console.log(id.toUpperCase())
+        }
+        let publicAPI = {
+            change:change,
+            identify:identify1
+        }
+        return publicAPI
+    })('foo')
+
+    // foo.identify();
+    // foo.change();
+    // foo.identify()
+
+    console.log(foo)
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+/// bad 
+        function makeBankAccount() {
+        // ...
+
+        return {
+            balance: 0,
+            // ...
+        };
+        }
+
+        const account = makeBankAccount();
+        account.balance = 100;
+
+
+    // good
+    function makeBankAccount() {
+        // 私有变量
+        let balance = 0;
+        function getBalance() {
+            return balance;
+        }
+        function setBalance(amount) {
+            // ... 在更新 balance 前，对 amount 进行校验
+            balance = amount;
+        }
+        return {
+            getBalance,
+            setBalance,
+        };
+    }
+
+    const account = makeBankAccount();
+    account.setBalance(100);
+
+    </script>
+</body>
+</html>

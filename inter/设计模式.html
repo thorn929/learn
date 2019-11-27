@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 工厂模式  分为好几种  以下 为 简单工厂模式
+
+    class Man {
+      constructor(name){
+        this.name = name
+      }
+      alertName(){
+        console.log(this.name)
+      }
+    }
+
+    class Factory {
+      static create(name) {
+        return new Man(name)
+      }
+    }
+
+    Factory.create('yck').alertName()
+
+    //  单例模式
+
+    class Singleton {
+      constructor() {}
+    }
+
+    Singleton.getInstance = (function() {
+      let instance
+      return function() {
+        if (!instance) {
+          instance = new Singleton()
+        }
+        return instance
+      }
+    })()
+
+    let s1 = Singleton.getInstance()
+    let s2 = Singleton.getInstance()
+    console.log(s1 === s2) // true
+
+
+
+</script>
+</body>
+</html>

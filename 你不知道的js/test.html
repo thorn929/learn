@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <div id="app">
+        <test v-for="(item,index) in items" :item="item" @show="show" ref ='test'>
+    </div>
+    <script>
+        Vue.component('test',{
+            props:['item'],
+            template:
+                `
+                    <div>
+                        <p @click="show($event,item)">{{item.text1}}</p>
+                        <input v-model="item.text1" v-show="item.show_input" :ref="item.text1"></input>
+                    </div>
+                 `,
+            methods:{
+                // show(event,item){
+                //     this.$emit('show',event,item);
+                // },
+                show(event,item){
+                    this.$emit('show',event,item);
+                    // this.$nextTick(() => {
+                        this.$refs[item.text1].focus()
+                    // })
+                },
+            }
+        });
+        new Vue({
+            el:'#app',
+            data:{
+                items:[
+                    {
+                        'text1':'aaaaaaa',
+                        'show_input':false
+                    },
+                    {
+                        'text1':'bbbbbbb',
+                        'show_input':false
+                    }
+                ]
+            },
+            methods:{
+                // show(event,item){
+                //     item.show_input=true;
+                //     let ref_name=item.text1;
+                //     console.log(this.$refs.ref_name); // undefined
+                //
+                // },
+
+                show(event,item){
+                    console.log(this.$refs.test[0].$refs['input'])
+                    item.show_input = true;
+                    // this.$nextTick(() => {
+                    //     //
+                    //     this.$refs[`test-${item.text1}`][0].$refs['input'].focus()
+                    // })
+                }
+            }
+        });
+    </script>
+</head>
+<body>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+ const p1 = new Promise((resolve, reject) => {
+   resolve({1:1});
+   // return resolve({1:1});
+ });
+ const p2 = new Promise((resolve, reject) => {
+   resolve({2:2});
+   // return resolve({2:2});
+ });
+
+ const p3 = new Promise((resolve, reject) => {
+   resolve({3:4});
+   // return resolve({3:4});
+ });
+ Promise.all([p1, p2, p3]).then(data => {
+   console.log(data); // [1, 2, 3] 结果顺序和promise实例数组顺序是一致的
+ }, err => {
+   console.log(err);
+ });
+
+
+let Promise1 = new Promise(function(resolve, reject){})
+let Promise2 = new Promise(function(resolve, reject){})
+let Promise3 = new Promise(function(resolve, reject){})
+
+let p = Promise.all([Promise1, Promise2, Promise3])
+
+ p.then(function(data){
+   // 三个都成功则成功
+   console.log('成功', data)
+ },function(err){
+   // 只要有失败，则失败
+   console.log('失败', err)
+ })
+
+
+
+
+</script>
+</body>
+</html>

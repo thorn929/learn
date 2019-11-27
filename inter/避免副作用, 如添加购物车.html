@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*  
+      在 JavaScript 中，基本类型通过赋值传递，对象和数组通过引用传递。以引用传递为例：
+      假如我们写一个购物车，通过 addItemToCart() 方法添加商品到购物车，修改 购物车数组。此时调用 purchase() 方法购买
+      由于引用传递，获取的 购物车数组 正好是最新的数据。看起来没问题对不对？
+      如果当用户点击购买时，网络出现故障， purchase() 方法一直在重复调用，与此同时用户又添加了新的商品，这时网络又恢复了
+      那么 purchase() 方法获取到 购物车数组 就是错误的。为了避免这种问题，我们需要在每次新增商品时，克隆 购物车数组
+      并返回新的数组。
+    */
+    let  arr1 = [
+        {
+            item: 11
+        }
+    ]
+    //  bad
+    const addItemToCart1 = (cart, item) => {
+        console.log(item)
+        cart.push({ item});
+    };
+    console.log(arr1, 122)
+    console.log('==========')
+    // good
+    let  arr = [
+        {
+            item: 11
+        }
+    ]
+    const addItemToCart = (cart, item) => {
+        return [...cart, { item }]
+    };
+
+    console.log(addItemToCart(arr, 45))
+
+    </script>
+</body>
+</html>

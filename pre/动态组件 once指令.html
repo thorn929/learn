@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <!--动态组件  根据状态来判断显示组件-->
+    <!--<component :is="type"></component>-->
+    <!--v-once 提高性能 放到内存 -->
+
+
+    <child-one v-if="type === 'child-one'"></child-one>
+    <child-two v-if="type === 'child-two'"></child-two>
+
+    <button @click="changeClick">change</button>
+</div>
+<script>
+
+    Vue.component('child-one',{
+        template:'<div v-once>child-one</div>'
+    })
+    Vue.component('child-two',{
+        template:'<div v-once>child-two</div>'
+    })
+    let vm = new Vue({
+        el:"#root",
+        data:{
+            type:'child-one'
+        },
+        methods:{
+            changeClick(){
+                console.log(111)
+                this.type  = (this.type  === 'child-one' ? 'child-two' : 'child-one');
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var a={length:2,0:'first',1:'second'};
+    //
+    //
+    // a  b c c a
+    // console.log(Array.prototype.slice.call(a))
+    // var a={length:2};
+    //
+    // console.log(Array.prototype.slice.call(a))
+    //
+    //
+    //
+    // // ----------------
+    // var a = function(){
+    //     console.log(this);  // 'littledu'
+    //     console.log(typeof this);   // Object
+    //     console.log(this instanceof String);  // true
+    // }
+    // a.call('littledu');
+
+    // (function(){
+    //     console.log(typeof arguments)
+    //     return typeof arguments
+    // })()
+
+    // var f = function g(){
+    //     return23;
+    // }
+    // typeof g()
+
+    // (function(x){
+    //     console.log(x)
+    //     delete x; return x;
+    // })(1)
+
+    // var y = 1; x = y = typeof x
+    // console.log(x)
+
+    // (function f(f){
+    //     console.log(typeof f())
+    //     return typeof f();
+    // })(function(){return 1})
+
+    var foo = {
+        bar: function(){return this.baz},
+        baz:1
+    }
+    (function(){
+        return typeof arguments[0]();
+    })(foo.bar)
+
+  // a b c
+  //    var foo = {
+  //       bar: function(){
+  //           console.log(this.baz)
+  //           return this.baz},
+  //       baz:1
+  //   }
+  //
+  //   typeof (f = foo.bar)()
+  //
+  //
+  //   var f = (function f(){return "1"},function g(){return 2})()
+  //   console.log(typeof f)
+
+
+    // var x =1;
+    // if(function f(){}){
+    //     console.log(x += typeof f)
+    // }
+
+
+
+</script>
+</body>
+</html>

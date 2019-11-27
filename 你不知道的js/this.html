@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>这里的你不知道的js  有点难度</title>
+</head>
+<body>
+<script>
+    function foo(something){
+        console.log(this)
+        this.a = something
+    }
+
+    var  obj1 = {}
+
+    var bar = foo.bind(obj1);
+
+    bar(2)
+
+    var baz = new bar(4)
+    console.log(baz)
+
+    // function foo(p1, p2) {
+    //     this.val = p1 + p2
+    // }
+    //
+    // var  bar = foo.bind(null, "p1")
+    // console.log(bar)
+    // var  baz = new bar('p2')
+    //
+    // console.log(baz)
+
+    // -----------
+
+    // function foo(a,b){
+    //     console.log(a,b)
+    // }
+    //
+    // foo.apply(null,[2,3])
+    //
+    // var bar = foo.bind(null, 4)
+    // bar(5)
+
+
+
+</script>
+</body>
+</html>

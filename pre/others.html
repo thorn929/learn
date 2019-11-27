@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var someOne = { };
+    Object.defineProperty(someOne, "name", {
+        value:"coverguo" , //由于设定了writable属性为false 导致这个量不可以修改
+        configurable: false,
+        writable: true,
+
+    });
+    console.log(someOne.name); // 输出 coverguo
+    someOne.name = "linkzhu";
+    console.log(someOne.name); // 输出coverguo
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // a=b&c=d   {a: b, c :d}
+    let str = 'a=b&c=d '
+    let obj = {}
+
+    // 匹配等号  左边的 右边的 
+
+    // 需要取出=左边的 和 & 左边的  也就是 a 和 b
+    // () = ()
+    // 第一个里面不能有等号 a=b&c=  这里面不能有等号  
+    // 不是等号的 停住 不是等号一直取 取 *(n)个  所以也不能是 & 
+    // ''
+    str.replace(/([^=&]*)=([^=&]*)/g, function() {
+        obj[arguments[1]] = arguments[2]
+    })
+    
+    console.log(obj)
+
+
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //     Q: 对数组 ['2018-03-05', '2013-06-12','2019-03-12','2018-03-05','2014-02-22'] 去重且排序
+    // 结合...解构,可以把可迭代(比如 arguments/nodelist 等)的转为数组
+    // sort 里面传入 两个值比较,返回-1和1是因为1代表这个数大排后(相对),-1代表小(相对),0为相等
+
+    let arr1 = [new Set(['2018-03-05', '2013-06-12','2019-03-12','2018-03-05','2014-02-22'])].sort(function(a,b){
+        return a<b ? -1:1; // 这里返回的是升序的,降序改下返回值就好了.所以是相对
+    })
+
+    // ["2013-06-12", "2014-02-22", "2018-03-05", "2019-03-12"]
+
+    //    Q: 对数组[1,2,3,4,5,'6',7,'8','a','b','z']进行乱序
+    let tempArr = [1,2,3,4,5,'6',7,'8','a','b','z'].sort(function(){
+        return Math.random() > 0.5 ? -1 : 1;
+    })
+
+    console.log(tempArr)
+
+    console.log('==============================')
+      //    Q: 求[1, 10, 11, -1,'-5',12, 13, 14, 15, 2, 3, 4, 7, 8, 9]内最大值与最小值之差
+    function MaxMinPlus(arr) {
+        // 返回最大值与最小值之差  很好 灵活  运用的很好
+        return Array.isArray(arr) ? Math.max.apply(Math, arr) - Math.min.apply(Math, arr) : console.log('传入的不是数组亦或者未能解决的错误')
+    }
+    let maxArr = [1, 10, 11, -1,'-5',12, 13, 14, 15, 2, 3, 4, 7, 8, 9]
+    console.log(MaxMinPlus(maxArr))
+
+    console.log('-------------------------')
+
+    //  请给Array实现一个方法,去重后返回重复的字符(新数组)  这个挺难的目前来说
+
+
+    var testArr = [1,6,8,3,7,9,2,7,2,4,4,3,3,1,5,3];
+
+    Array.prototype.extraChar = function(){
+        var cacheExtraChar = []; // 缓存重复出现的字符
+        var that = this; // 缓存 this;
+        this.map(function(item,index){
+            // 怎么理解这段代码呢?
+            // 就是向前往后查找一遍和从后往前查找一遍,不等就是没有重复
+            // 为什么还要判断一遍缓存,是过滤缓存数组内多次写入
+            (that.indexOf(item) !== that.lastIndexOf(item)) && cacheExtraChar.indexOf(item) === -1 ? cacheExtraChar.push(item) : -1;
+        });
+        console.log(cacheExtraChar)
+        return cacheExtraChar;
+    }
+
+    testArr.extraChar(); // [1, 3, 7, 2, 4]
+
+    // 若是还需要排序就再排序下  很好的思路延伸
+    // [1,6,8,3,7,9,2,7,2,4,4,3,3,1,5,3].extraChar().sort(function(a,b){return a-b}) // [1, 2, 3, 4, 7]
+
+    /// :一个数组中 par中存放了多个人员的信息,每个人员的信息由 name 和 age 构成({name:'张三',age:15}).请用 JS 实现年龄从小到大的排序;
+
+    var par = [{age:5,name:'张三'},{age:3,name:'李四'},{age:15,name:'王五'},{age:1,name:'随便'}]
+    console.log(par)
+    var parSort = par.sort(function(a,b){
+        return a.age - b.age;
+    })
+
+
+    console.log('---------------------------------')
+    // Q:  判断一个回文字符串和同字母异序字符串  这尼玛什么意思
+
+    // 回文判断 , 比如用 abcba
+    var isPalindromes = function(params){
+        params = params.toString().toLowerCase()
+        return params === params.split('').reverse().join('');
+    }
+    // 同字母异序判定,比如`abcefd`和`dceabf`
+    var isAnagram = function(str1, str2)  {
+        str1 = str1.toString().toLowerCase();
+        str2 = str2.toString().toLowerCase();
+        return str1.split('').sort().join('') === str2.split('').sort().join('')
+    }
+
+    // console.log('------------')
+   // Q: JS 实现String.trim()方法;
+
+    String.prototype.emuTrim = function(){
+        // 这条正则很好理解,就是把头部尾部多余的空格字符去除
+        return this.replace(/(^\s*)|(\s*$)/g,'');
+    }
+
+    console.log('====================')
+
+
+    // Q: JS 实现函数运行一秒后打印输出0-9;给定如下代码
+    //  这道题涉及到作用域
+    for(var i=0;i<10;i++){
+        setTimeout((function(i){
+            return function(){
+                // console.log(i);
+            }
+        })(i),1000);
+    }
+
+    for(let i=0;i<10;i++){
+        setTimeout(function(){
+            // console.log(i);
+        },1000);
+    }
+
+    // Q: javascript里面的继承怎么实现，如何避免原型链上面的对象共享
+
+    // ES5:寄生组合式继承:通过借用构造函数来继承属性和原型链来实现子继承父。
+
+        function ParentClass(name) {
+            this.name = name;
+        }
+        ParentClass.prototype.sayHello = function () {
+            console.log("I'm parent!" + this.name);
+        }
+        function SubClass(name, age) {
+            //若是要多个参数可以用apply 结合 ...解构
+            ParentClass.call(this, name);
+            this.age = age;
+        }
+        SubClass.prototype = Object.create(ParentClass.prototype);
+        SubClass.prototype.constructor = SubClass;
+        SubClass.prototype.sayChildHello = function (name) {
+            console.log("I'm child " + this.name)
+        }
+
+
+        let testA = new SubClass('CRPER')
+        console.log(testA)
+
+      // es6
+
+        class ParentClass1 {
+            constructor(name) {
+                this.name = name;
+            }
+            sayHello() {
+                console.log("I'm parent!" + this.name);
+            }
+        }
+
+        class SubClass1 extends ParentClass1 {
+            constructor(name) {
+                super(name);
+            }
+            sayChildHello() {
+                console.log("I'm child " + this.name)
+            }
+            // 重新声明父类同名方法会覆写,ES5的话就是直接操作自己的原型链上
+            sayHello(){
+                console.log("override parent method !,I'm sayHello Method")
+            }
+        }
+
+        let testA1 = new SubClass1('CRPER')
+        console.log(testA1)
+
+
+        // this
+    console.log('==================')
+        function foo(something){
+            this.a = something;
+        }
+
+        var obj1 = {
+            foo:foo
+        };
+
+        var obj2 = {};
+
+        obj1.foo(2)
+
+        console.log(obj1.a) // 2 ,此时的 this 上下文还在 obj1内,若是 obj1.foo 先保存当做引用再执行传参,则上下文为 window
+
+        obj1.foo.call(obj2,3); // 用 call 强行改变上下文为 obj2内
+        console.log(obj2.a); // 3∂
+
+        var  bar = new obj1.foo(4); // 这里产生了一个实例
+        console.log(obj1.a); // 2
+        console.log(bar.a); // 4;  new的绑定比隐式和显式绑定优先级更高
+
+
+        console.log('----------')
+        // 这个简单的例子非常好 非常好
+        var a  = { n : 1};
+        var b = a;
+
+        a.x = a = {n: 2};
+
+        console.log(a)
+        console.log(b)
+
+        // 另一个
+        console.log('============')
+        function fn(){
+            console.log(a);
+            var a = 200;
+            console.log(a);
+        }
+
+        fn(); // undefined / 200 ; 涉及变量提升
+        console.log(a); // undefined
+        var a;
+        console.log(a); // undefined
+
+        var a = 300;
+        console.log(a); // 300
+
+
+        var aa = function bb() {
+            console.log(4)
+        }
+
+
+        //  es6 类 不new 为什么会报错
+        //  组件需要注意什么
+        //  不绑定key 为什么会出现警告
+        //  缓存的缺点是什么
+
+</script>
+</body>
+</html>

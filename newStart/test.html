@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    secretary = false
+    laptop = false
+    bonus = false
+    secretary = false
+    salary = false
+    vacation = false
+    function rankProgrammer(rank){
+        switch(rank){
+            case "高级":
+                this.secretary = true;
+            case "中级":
+                this.laptop = true;
+                this.bonus = true;
+                break
+            case "初级":
+                this.salary = true;
+                this.vacation = true;
+        }
+    }
+    rankProgrammer("中级");
+    console.log(secretary)
+    console.log(laptop)
+    console.log(bonus)
+    console.log(salary)
+    console.log(vacation)
+
+
+
+</script>
+</body>
+</html>

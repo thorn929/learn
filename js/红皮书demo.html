@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    function callSomeFunction(someFunction, someArgument){
+        console.log(someFunction)
+        return someFunction(someArgument)
+    }
+
+    function add10(num){
+        return num + 101;
+    }
+
+
+    var result1 = callSomeFunction(add10,1)
+    console.log(result1)
+
+    //
+    // function getGreeting(name){
+    //     return "Hello, " + name
+    // }
+    //
+    // var result2 = callSomeFunction(getGreeting, "Thorn")
+    // console.log(result2)
+
+
+
+
+
+
+</script>
+</body>
+</html>

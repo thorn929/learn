@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+ // 需求创造100个士兵
+ // /*    var 士兵们 = []
+ //    var 士兵
+ //    for(var i=0; i<100; i++){
+ //      士兵 = {
+ //        ID: i, // ID 不能重复
+ //        兵种:"美国大兵",
+ //        攻击力:5,
+ //        生命值:42,
+ //        行走:function(){ /*走俩步的代码*/},
+ //        奔跑:function(){ /*狂奔的代码*/  },
+ //      死亡:function(){ /*Go die*/    },
+ //      攻击:function(){ /*糊他熊脸*/   },
+ //      防御:function(){ /*护脸*/       }
+ //    }
+ //      士兵们.push(士兵)
+ //    }
+ //
+ //    兵营.批量制造(士兵们)*/
+ //
+ /**
+  * 上述代码很简单  但是浪费了内存 !!!!
+  * 行走、奔跑、死亡、攻击、防御这五个动作对于每个士兵其实是一样的，只需要各自引用同一个函数就可以了，没必要重复创建 100 个行走、100个奔跑……
+     这些士兵的兵种和攻击力都是一样的，没必要创建 100 次。
+      只有 ID 和生命值需要创建 100 次，因为每个士兵有自己的 ID 和生命值。
+  * @constructor
+  */
+
+//
+//  function Soldier(id){
+//    this.id = id;
+//  }
+//  Soldier.prototype = {
+//    type:'china',
+//    age: 18,
+//    sex:'man'
+//  }
+//
+//  let soldArr = []
+//
+//   for(let i = 0; i < 100 ; i++) {
+//       soldArr.push(i)
+//   }
+//
+//     new Soldier()
+// console.log(Soldier(soldArr))
+
+   // 这样就是个完整例子了
+     function Person(name){
+       this.name=name;
+     }
+
+     Person.prototype = {
+       constructor:Person,
+       age:18,
+       say:function(){
+         console.log("你好");
+       },
+     }
+
+     // var p1=new Person("1");
+     // var p2=new Person("2");
+       let soldArr = []
+
+     for(let i = 1; i < 4 ; i++) {
+         soldArr.push(new Person(i))
+     }
+
+    console.log(soldArr)
+    console.log(soldArr[0])
+
+</script>
+</body>
+</html>

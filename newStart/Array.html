@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a = [1,2,3];
+    let b = [2, 4, 5];
+
+    // 并集
+    // let union = a.concat(b.filter(v => !a.includes(v)));
+    // console.log(union)
+    //
+    // // 交集
+    // let intersection = a.filter(v => b.includes(v));
+    // console.log(intersection)
+
+    // 差集
+    let difference = a.concat(b).filter(v => !a.includes(v) || !b.includes(v));
+
+    console.log(difference)
+
+
+
+
+
+
+</script>
+</body>
+</html>

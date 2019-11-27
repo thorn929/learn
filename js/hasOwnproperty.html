@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // o = new Object();
+    // o.prop = 'exists';
+    //
+    // function changeO() {
+    //     o.newprop = o.prop;
+    //     delete o.prop;
+    // }
+    //
+    // console.log(o.hasOwnProperty('prop')) // 返回 true
+    // changeO();
+    // console.log(o.hasOwnProperty('prop'));   // 返回 false
+
+
+    // o = new Object();
+    // o.prop = 'exists';
+
+    // console.log(o.hasOwnProperty('prop'))              // 返回 true
+    // console.log(o.hasOwnProperty('toString'))          // 返回 false
+    // console.log(o.hasOwnProperty('hasOwnProperty'))    // 返回 false
+
+    // var buz = {
+    //     fog: 'stack'
+    // };
+    //
+    // for (var name in buz) {
+    //     console.log(name)
+    //     if (buz.hasOwnProperty(name)) {
+    //         console.log("this is fog (" + name + ") for sure. Value: " + buz[name]);
+    //     }
+    //     else {
+    //         console.log(name); // toString or something else
+    //     }
+    // }
+
+    //
+    // var foo = {
+    //     hasOwnProperty: function() {
+    //         return false;
+    //     },
+    //     bar: 'Here be dragons'
+    // };
+    //
+    //
+    // console.log(foo.hasOwnProperty('bar'))   // 始终返回 false
+    //
+    // console.log(({}).hasOwnProperty.call(foo, 'bar'))   // 如果担心这种情况，可以直接使用原型链上真正的 hasOwnProperty 方法  // true
+    //
+    // console.log(Object.prototype.hasOwnProperty.call(foo, 'bar'))  // 也可以使用 Object 原型上的 hasOwnProperty 属性  // true
+
+
+    function foo(a) {
+        var b = 2;
+        function c() {
+        }
+        var d = function() {
+        };
+
+        b = 3;
+
+    }
+
+    foo(1);
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

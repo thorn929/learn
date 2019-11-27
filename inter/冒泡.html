@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+  .div1 {
+    width: 300px;
+    height: 300px;
+    background: #f0ad4e;
+  }
+
+  .div2 {
+    width: 200px;
+    height: 200px;
+    background: #00deff;
+  }
+
+  .div3 {
+    width: 100px;
+    height: 100px;
+    background: #9B410E;
+  }
+  </style>
+</head>
+<body>
+<div class="div1" onclick="fun1();">
+  <div class="div2" onclick="fun2();">
+    <div class="div3" onclick="fun3(event);">div3</div>
+    div2
+  </div>
+  div1
+</div>
+<script>
+function fun1 () {
+  console.log('div1')
+}
+
+function fun2 () {
+  console.log('div2')
+}
+
+function fun3 (e) {
+  console.log(e)
+  console.log('div3')
+  e.stopPropagation()
+}
+</script>
+</body>
+</html>

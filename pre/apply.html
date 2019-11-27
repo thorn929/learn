@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Demo 1
+    // function class1(args1,args2){
+    //     this.name=function(){
+    //         console.log(args1,args2);
+    //     }
+    // }
+    // function class2(){
+    //     var args1="1";
+    //     var args2="2";
+    //     class1.call(this,args1,args2);
+    //     /*或*/
+    //     class1.apply(this,[args1,args2]);
+    // }
+    //
+    // var c=new class2();
+    // c.name();
+
+
+    // Demo 2
+    // function fruits() {}
+    //
+    // fruits.prototype = {
+    //     color: "red",
+    //     say: function() {
+    //         console.log("My color is " + this.color);
+    //     }
+    // }
+    //
+    // var apple = new fruits();
+    // apple.say();
+    //
+    // banana = {
+    //     color: "yellow"
+    // }
+    // apple.say.call(banana);     //My color is yellow
+    // apple.say.apply(banana);    //My color is yellow
+
+
+    // Demo 3  1 数组之间的追加
+    // var array1 = [12,"foo",{name :"joe"},-2456];
+    // var array2 = ['Doe',555,100];
+    // Array.prototype.push.apply(array1,array2);
+    // console.log(array1)
+    // console.log(array2)
+
+
+    // Demo4 2 获取数组中的最大值和最小值
+    // var numbers = [5,11,333,44];
+    // var maxInNumbers = Math.max.apply(null,numbers);
+    // var maxInNumbers = Math.max.apply(this,numbers);
+    // console.log(maxInNumbers)
+
+    // ❎Demo five 验证是否是数组 (前提是toString() 方法没有被重写过)  这个例子错啦错啦 不明白❌
+    // let aa = [1,3]
+    // functionisArray(obj){
+    //     return Object.prototype.toString.call(obj) === '[object Array]' ;
+    // }
+    // functionisArray(aa)
+
+    //  Demo six    getElementsByTagName , document.childNodes 伪数组通过下面转化为真正数组
+    // var domNodes = Array.prototype.slice.call(document.getElementsByTagName("*"))
+    // console.log(domNodes)
+    // console.log(document.getElementsByTagName("*"))
+    //
+    // console.log(Array.prototype.slice.call(document.childNodes))
+
+    /*
+    * Javascript中存在一种名为伪数组的对象结构。比较特别的是 arguments 对象，还有像调用 getElementsByTagName , document.childNodes 之类的，它们返回NodeList对象都属于伪数组。不能应用 Array下的 push , pop 等方法。
+       但是我们能通过 Array.prototype.slice.call 转换为真正的数组的带有 length 属性的对象，这样 domNodes 就可以应用 Array 下的所有方法了。
+    */
+
+    console.log(test);
+
+    let test = 'test'
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

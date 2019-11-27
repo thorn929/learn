@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 使用构造函数绑定来继承
+    // function Animal(){
+    //     this.species = '动物'
+    // }
+    //
+    // function Cat(name, color){
+    //     Animal.call(this,arguments)
+    //     this.name = name;
+    //     this.color = color;
+    // }
+    //
+    // var  cat1 = new Cat('三毛','白色')
+    // console.log(cat1.species)
+    // console.log(cat1.name)
+
+    //  prototype 模式
+
+    //  不变的属性都可以直接写入 animal.prototype 所以 我们也可以让Cat 跳过  animal() 直接继承 animal.prototype
+
+        function Animal(){}
+        Animal.prototype.species = '动物';
+
+        function Cat(name, color){
+            this.name = name;
+            this.color = color;
+        }
+
+        Cat.prototype = Animal.prototype;
+        // 这句话有问题
+         Cat.prototype.constructor = Cat;
+        var cat1 = new Cat('大猫','黄色的')
+
+        console.log(cat1.species)
+
+        // 这里指向cat了
+        // console.log(this is dong xi )
+        console.log(Animal.prototype.constructor)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // function Animal(type, name) {
+    //     console.log(this)
+    //     console.log(type)
+    //     console.log(name)
+    //     this.type = type
+    //     this.name = name
+    //     this.hobbies = ['eat fish', 'play ball']
+    // }
+    // function Cat(type, name) {
+    //     Animal.call(this, type, name)
+    //     this.age = '1'
+    //     this.say = () => {
+    //         console.log('type is ' + this.type + ' name is ' + this.name);
+    //     }
+    // }
+    // let smallCat = new Cat('Cat', 'Nini')
+    // smallCat.hobbies.push('sleep')
+    // console.log(smallCat.hobbies); // [ 'eat fish', 'play ball', 'sleep' ]
+    // smallCat.say() // type is Cat name is Nini
+    //
+    // let bigCat = new Cat('Cat', 'Nicole')
+    // console.log(bigCat.hobbies) // [ 'eat fish', 'play ball' ]
+    // bigCat.say() // type is Cat name is Nicole
+
+
+    // var  s = 2.5
+    // var aa = s.toString().split('.')
+    // console.log(aa[1])
+
+
+    function mul(num1,num2){
+        var m = 0;
+        try{
+            m+=num1.toString().split(".")[1].length
+            console.log(m)
+        }catch(e){}
+        try{
+            m+=num2.toString().split(".")[1].length
+        }catch(e){}
+
+        return (Number(num1.toString().replace(".",""))*Number(num2.toString().replace(".","")))/Math.pow(10,m)
+    }
+
+    mul(44.534,34.2342)
+</script>
+</body>
+</html>

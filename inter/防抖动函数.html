@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="cli">点击</div>
+<script>
+
+  /**
+   * 1.
+   *  在搜索引擎搜索问题的时候，我们当然是希望用户输入完最后一个字才调用查询接口，
+   *  这个时候适用延迟执行的防抖函数，它总是在一连串（间隔小于wait的）函数触发之后调用。
+   * 2.
+   *   用户给interviewMap点star的时候，我们希望用户点第一下的时候就去调用接口，
+   *   并且成功之后改变star按钮的样子，用户就可以立马得到反馈是否star成功了，
+   *   这个情况适用立即执行的防抖函数，它总是在第一次调用，并且下一次调用必须与前一次调用的时间间隔大于wait才会触发。
+
+   *   防抖函数 返回返回函数连续调用时 空闲时间必须大于或等于 wait, func 才执行
+   */
+
+  // function debounce (func, wait = 50, immediate = true) {
+  //   let  timer, context, args
+  //
+  //   // 延迟执行函数
+  //   const later = () => setTimeout(() =>{
+  //     // 延迟函数执行完毕, 清空缓存的定时器序号
+  //
+  //     timer = null
+  //     console.log(timer)
+  //     // 延迟执行的情况下, 函数会在延迟函数中执行
+  //     // 使用到之前换成的参数和上下文
+  //     if (!immediate) {
+  //       func.apply(context, args)
+  //       context = args = null
+  //     }
+  //   }, wait)
+  //
+  //   // 这里返回的函数是每次实际调用的函数
+  //   return function(...params) {
+  //     // 如果没有创建延迟执行函数 (later) , 就创建一个
+  //     console.log(timer)
+  //     if (!timer) {
+  //       timer = later()
+  //       // 如果是立即执行函数, 调用函数
+  //       // 否则缓存参数和调上下文
+  //       if (immediate) {
+  //         func.apply(this, params)
+  //       } else {
+  //         context = this
+  //         args = params
+  //       }
+  //       // 如果已有延迟执行函数 later 调用的时候清除原来的并重新设定一个
+  //       // 这样做延迟函数会重新计时
+  //     } else {
+  //       console.log("timer存在")
+  //       clearTimeout(timer)
+  //       timer = later()
+  //     }
+  //   }
+  // }
+
+  function foo() {
+    console.log('trouble i am in!');
+  }
+  let elem = document.getElementById('cli');
+  // elem.addEventListener('click', debounce(foo, 1500, true));
+  //
+  // function debounce(func, wait = 1000, immediate = true){
+  //     let timer, context, args
+  //     const later = () => setTimeout(() => {
+  //       timer = null
+  //       console.log(immediate)
+  //         if (!immediate) {
+  //           func.apply(context, args)
+  //           context = args = null
+  //         }
+  //     },wait)
+  //
+  //     return function(...params){
+  //       if (!timer) {
+  //           timer = later()
+  //           if (immediate) {
+  //             func.apply(this, params)
+  //           } else {
+  //             context = this
+  //             args = params
+  //           }
+  //       } else {
+  //           clearTimeout(timer)
+  //           timer = later()
+  //       }
+  //     }
+  // }
+  elem.onclick  = (p) => {
+    console.log(p)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

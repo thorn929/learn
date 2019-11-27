@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+class Foo {
+  static classMethod1() {
+    return 'hello';
+  }
+  classMethod(name){
+    this.name = 1
+  }
+}
+
+class Bar extends Foo {
+  // 这个
+  static classMethodTest() {
+    // 这里是调用 的  static的方法
+    return super.classMethod1() + ', too';
+  }
+}
+// 这个一样
+console.log(Bar.classMethodTest())
+
+// =======
+
+class Rectangle {
+  constructor(length, ) {
+  return length = 1
+  }
+}
+
+class Square extends Rectangle {
+  constructor(length) {
+    super(length);
+  }
+}
+
+var obj = new Square(3); // 输
+console.log(obj)
+</script>
+</body>
+</html>

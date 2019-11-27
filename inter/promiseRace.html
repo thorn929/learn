@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function timerPromisefy(delay) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        resolve(delay);
+      }, delay);
+    });
+  }
+  var startDate = Date.now();
+
+  Promise.race([
+    timerPromisefy(10),
+    timerPromisefy(20),
+    timerPromisefy(30)
+  ]).then(function (values) {
+    console.log(values); // 10
+  });
+
+</script>
+</body>
+</html>

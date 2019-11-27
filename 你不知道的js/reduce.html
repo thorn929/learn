@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>reduce</title>
+</head>
+<body>
+  <script>
+  'use strict'
+
+  const characters = [
+    {name: 'ironman', env: 'marvel'},
+    {name: 'black_widow', env: 'marvel'},
+    {name: 'wonder_woman', env: 'dc_comics'},
+  ]
+
+  // let a =  characters.filter(character => character.env === 'marvel')
+  //
+  // let b = a.map(character =>
+  //   Object.assign({}, character, { alsoSeenIn: ['Avengers']})
+  // )
+
+  let c = characters.reduce((acc, character) => {
+
+    if (character.env === 'marvel') {
+
+      return acc.concat(Object.assign({}, character, {alsoSeenIn: ['Avengers']}))
+
+    } else {
+
+      return acc
+
+    }
+
+  }, [])
+
+  console.log(c)
+
+
+
+  </script>
+</body>
+</html>

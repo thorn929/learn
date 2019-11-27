@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <template v-for='(item,index) in list'  >
+            <p v-if='item.id'>{{item.content}}</p>
+            <p v-else >{{item.other}}</p>
+        </template>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                list:[
+                    {
+                        id:12,
+                        content:'11111111111'
+                    },
+                    {
+                        id:1,
+                        content:'222222222 澄清'
+                    },
+                    {
+                        id:2,
+                        content:'3333'
+                    },
+                    {
+                        content:'444444',
+                        other: '其他============='
+                    }
+                ],
+            },
+            methods: {
+                a() {
+                }
+            }
+        })
+    </script>
+</body>
+</html>

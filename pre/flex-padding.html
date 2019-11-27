@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="http://static.runoob.com/assets/vue/1.0.11/vue.min.js"></script>
+    <title>vue演示</title>
+</head>
+<body>
+<div id='app'>
+    <input type="text" v-model="val"><button @click="add">提交</button>
+    <ul>
+        <todo-Item v-bind:content='item',v-bind:a='index'
+                   v-for="(item, index) in list"
+                   @delete='handleItemDelete'>
+        </todo-Item>
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+
+    /*  Vue.component("todoItem",{
+      props:['content'],
+      template:'<li>{{content}}</li>'
+     }) */
+
+    var TodoItem = {
+        props:['content'],
+        template:'<div @click="handleItemClick">{{item}} -- {{index}}</div>',
+        methods:{
+            handleItemClick:function(item){
+                console.log(item);
+                this.$emit('delete');
+            }
+        }
+    }
+
+    new Vue({
+        el:"#app",
+        components:{
+            TodoItem:TodoItem
+        },
+        data: {
+            val:'',
+            list:[]
+        },
+        methods:{
+            add:function(){
+                if(this.val!=''){
+                    this.list.push(this.val);
+                    console.log(this.list)
+                    this.val = ''
+                }
+            },
+            handleItemDelete:function(){
+
+            }
+        }
+    });
+</script>
+</html>
