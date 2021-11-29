@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function add(num1, num2) {
+    //   const num1Digits = (num1.toString().split(".")[1] || "").length;
+    //   const num2Digits = (num2.toString().split(".")[1] || "").length;
+    //   const baseNum = Math.pow(10, Math.max(1, num1Digits, num2Digits));
+
+    //   console.log(baseNum, "baseNum");
+    //   return (num1 * baseNum + num2 * baseNum) / baseNum;
+    // }
+
+    let _boundaryCheckingState = true;
+
+    /**
+     * 把错误的数据转正
+     * strip(0.09999999999999998)=0.1
+     */
+    function strip(num, precision = 15) {
+      return +parseFloat(Number(num).toPrecision(precision));
+    }
+
+    /**
+     * 检测数字是否越界，如果越界给出提示
+     * @param {*number} num 输入数
+     */
+    function checkBoundary(num) {
+      if (_boundaryCheckingState) {
+        if (num > Number.MAX_SAFE_INTEGER || num < Number.MIN_SAFE_INTEGER) {
+          console.warn(
+            `${num} is beyond boundary when transfer to integer, the results may not be accurate`
+          );
+        }
+      }
+    }
+
+    /**
+     * 把小数转成整数，支持科学计数法。如果是小数则放大成整数
+     * @param {*number} num 输入数
+     */
+    function float2Fixed(num) {
+      if (num.toString().indexOf("e") === -1) {
+        return Number(num.toString().replace(".", ""));
+      }
+      const dLen = digitLength(num);
+      return dLen > 0 ? strip(Number(num) * Math.pow(10, dLen)) : Number(num);
+    }
+    /**
+     * 精确乘法
+     */
+    function times(...nums) {
+      console.log(nums, 'numss=======')
+      if (nums.length > 2) {
+        return iteratorOperation(nums, times);
+      }
+
+      const [num1, num2] = nums;
+      const num1Changed = float2Fixed(num1);
+      const num2Changed = float2Fixed(num2);
+      console.log(digitLength(num2));
+      const baseNum = digitLength(num1) + digitLength(num2);
+      // console.log(baseNum, 'baseNum------')
+      const leftValue = num1Changed * num2Changed;
+      // console.log(leftValue, 'leftValue====');
+      checkBoundary(leftValue);
+      let res = leftValue / Math.pow(10, baseNum);
+      // console.log(res, 'res====')
+
+      return res
+    }
+
+    /**
+     * 迭代操作
+     */
+    function iteratorOperation(arr, operation) {
+      const [num1, num2, ...others] = arr;
+      let res = operation(num1, num2);
+
+      others.forEach((num) => {
+        res = operation(res, num);
+      });
+
+      return res;
+    }
+
+    /**
+     * Return digits length of a number
+     * @param {*number} num Input number
+     */
+    function digitLength(num) {
+      // Get digit length of e
+      const eSplit = num.toString().split(/[eE]/);
+      // 处理科学计算
+      const len = (eSplit[0].split(".")[1] || "").length - +(eSplit[1] || 0);
+      let res = len > 0 ? len : 0;
+      return res
+    }
+
+    /** 加法操作 */
+    function plus(...nums) {
+      if (nums.length > 2) {
+        return iteratorOperation(nums, plus);
+      }
+
+      const [num1, num2] = nums;
+      // 取最大的小数位
+      const baseNum = Math.pow(10, Math.max(digitLength(num1), digitLength(num2)));
+      console.log(baseNum, 'baseNum')
+      // 把小数都转为整数然后再计算
+      return (times(num1, baseNum) + times(num2, baseNum)) / baseNum;
+      // return (num1 * baseNum + num2 * baseNum) / baseNum;
+    }
+    let res = plus(1.11, 2.22);
+    // let res = plus(1.1, 2.22, 3.333, 4.4444, 5.55555);
+    console.log(res, "res====");
+
+  </script>
+</body>
+
+</html>

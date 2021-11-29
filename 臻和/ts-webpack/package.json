@@ -1,0 +1,38 @@
+{
+  "name": "ts-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack",
+    "start:react": "webpack serve --config webpack.react.js",
+    "start:react-babel": "webpack serve --config webpack.react.withbabel.js",
+    "start:vue": "webpack serve --config webpack.vue.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.2.22",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.2",
+    "vue-loader": "^15.9.8",
+    "webpack": "^5.64.1",
+    "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
+    "@types/react": "^17.0.35",
+    "@types/react-dom": "^17.0.11",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.2.3",
+    "html-webpack-plugin": "^5.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "vue": "^3.2.22",
+    "webpack-dev-server": "^4.5.0"
+  }
+}

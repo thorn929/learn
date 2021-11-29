@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #map {
+    width: 400px;
+    height: 400px;
+    background: black;
+  }
+</style>
+
+<body>
+  <div id='map'></div>
+
+  <script>
+    /** 地图类
+      1. setData 设置数据
+      2. clearData 清除数据
+      3. include 该坐标是否包含数据
+      4. render 将数据渲染在地图元素上
+    */
+    class Map {
+      constructor(el, rect = 10) {
+        this.el = el
+        this.rect = rect
+        // 首先根据传入的元素大小生成样式， 用静态方法（不会在实例化对象的方法中，会被共享，因此所占用内容减少？？）
+        console.log(Map)
+      }
+      static setStyle(el) {
+        console.log(el, 'elll')
+      }
+    }
+
+    {
+      let el = document.querySelector('#map')
+      let gameMap = new Map(el, 12)
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    // 让多套 统一 umd/amd
+    "esModuleInterop": true,
+    // 解析jsx
+    "jsx": "react",
+    "noImplicitAny": true
+  }
+}
