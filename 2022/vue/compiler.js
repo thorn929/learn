@@ -50,15 +50,15 @@ export default class Compiler {
     if (node.attributes.length) {
       Array.from(node.attributes).forEach((attr) => {
         // 遍历元素节点的所有属性
-        const attrName = attr.attrName; // v-model v-html  v-on:click
+        const attrName = attr.name; // v-model v-html  v-on:click
         if (this.isDirective(attrName)) {
           let directiveName =
             attrName.indexOf(":") > -1
               ? attrName.substr(5)
               : attrName.substr(2);
           let key = attr.value;
-          console.log(key, "key-----");
-          // TODO： 更新dom节点
+          // console.log(directiveName, 'directiveName---')
+          // 更新dom节点
           this.updata(node, key, directiveName);
         }
       });
@@ -70,20 +70,45 @@ export default class Compiler {
     updateFn && updateFn.call(this, node, key, directiveName);
   }
 
-  /** 更新文本 */
-  textUpdater(node, value, key) {}
+  /** 解析v-text */
+  textUpdater(node, value, key) {
+    console.log(node, 'node')
+    console.log(value, 'value')
+    console.log(key, 'key')
+    node.textContent = value;
+    new Watcher(this.vm, key, (newValue) => {
+      node.textContent = newValue;
+    });
+  }
 
-  /** 更新 */
-  modelUpdater(node, value, key) {}
+  /** 解析v-model */
+  modelUpdater(node, value, key) {
+    node.value = value;
+    new Watcher(this.vm, key, (newValue) => {
+      node.value = newValue;
+    });
 
-  /** 更新文本 */
-  htmlUpdater(node, value, key) {}
+    node.addEventListener("input", () => {
+      this.vm[key] = node.value;
+    });
+  }
+
+  /** 解析v-html */
+  htmlUpdater(node, value, key) {
+    node.innerHTML = value;
+    new Watcher(this.vm, key, (newValue) => {
+      node.innerHTML = newValue;
+    });
+  }
+
+  clickUpdater(node, value, key, directiveName) {
+    node.addEventListener(directiveName, this.methods[key]);
+  }
 
   /** 判断元素指令是否是指令 */
   isDirective(attrName) {
     // v-
     // TODO: startsWith
-    console.log(attrName, "attrName=====");
     return attrName.startsWith("v-");
   }
   /** 判断是否是文本节点 */

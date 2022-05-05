@@ -8,7 +8,7 @@ import Observe from "./observer.js";
 export default class Vue {
   constructor(options = {}) {
     this.$options = options;
-    this.$data = options.$data;
+    this.$data = options.data;
     this.$methodes = options.methodes;
 
     this.initRootElement(options);
