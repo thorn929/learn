@@ -9,7 +9,6 @@ export default class Compiler {
     this.methods = vm.$methods;
     this.compile(vm.$el);
   }
-
   /** 编译模板 */
   compile(el) {
     // 伪数组
@@ -28,7 +27,6 @@ export default class Compiler {
       }
     });
   }
-
   /** 文本节点更新视图操作 */
   compileText(node) {
     // {{msg}} msg : hello vue
@@ -37,7 +35,6 @@ export default class Compiler {
 
     if (reg.test(value)) {
       const key = RegExp.$1.trim(); // msg
-      console.log(key, "key");
       node.textContent = value.replace(reg, this.vm[key]);
 
       new Watcher(this.vm, key, (newValue) => {
@@ -57,7 +54,6 @@ export default class Compiler {
               ? attrName.substr(5)
               : attrName.substr(2);
           let key = attr.value;
-          // console.log(directiveName, 'directiveName---')
           // 更新dom节点
           this.updata(node, key, directiveName);
         }
@@ -67,22 +63,21 @@ export default class Compiler {
   updata(node, key, directiveName) {
     // v-model v-text v-html v-on:click
     const updateFn = this[directiveName + "Updater"];
-    updateFn && updateFn.call(this, node, key, directiveName);
+    updateFn && updateFn.call(this, node, this.vm[key], key, directiveName);
   }
-
   /** 解析v-text */
   textUpdater(node, value, key) {
-    console.log(node, 'node')
-    console.log(value, 'value')
-    console.log(key, 'key')
+    // console.log(value, 'value')
     node.textContent = value;
     new Watcher(this.vm, key, (newValue) => {
       node.textContent = newValue;
     });
   }
-
   /** 解析v-model */
   modelUpdater(node, value, key) {
+    console.log(node, 'node=-')
+    console.log(value, 'value=--')
+    console.log(key, 'key')
     node.value = value;
     new Watcher(this.vm, key, (newValue) => {
       node.value = newValue;
@@ -92,7 +87,6 @@ export default class Compiler {
       this.vm[key] = node.value;
     });
   }
-
   /** 解析v-html */
   htmlUpdater(node, value, key) {
     node.innerHTML = value;
@@ -100,11 +94,9 @@ export default class Compiler {
       node.innerHTML = newValue;
     });
   }
-
   clickUpdater(node, value, key, directiveName) {
     node.addEventListener(directiveName, this.methods[key]);
   }
-
   /** 判断元素指令是否是指令 */
   isDirective(attrName) {
     // v-
@@ -115,7 +107,6 @@ export default class Compiler {
   isTextNode(node) {
     return node.nodeType === 3;
   }
-
   /** 判断是否是元素节点 */
   isElementNode(node) {
     return node.nodeType === 1;

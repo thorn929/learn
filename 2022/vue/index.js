@@ -4,7 +4,7 @@ const vm = new Vue({
   el: "#app",
   data: {
     msg: "Hello Vue",
-    count: 11,
+    count: 111,
     testHtml: "<ul><li>v-html测试</li></ul>",
   },
   methods: {
@@ -14,4 +14,4 @@ const vm = new Vue({
   },
 });
 
-console.log(vm, "vm====");
+// console.log(vm, "vm====");

@@ -9,7 +9,7 @@ export default class Vue {
   constructor(options = {}) {
     this.$options = options;
     this.$data = options.data;
-    this.$methodes = options.methodes;
+    this.$methods = options.methods;
 
     this.initRootElement(options);
 

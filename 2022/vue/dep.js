@@ -24,5 +24,4 @@ export default class Dep {
   }
 }
 
-
 // Dep 在哪里实例化 ？ 在哪里addSub ? notify 在哪里调用？

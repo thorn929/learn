@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    const mapTag = '[object Map]';
+    const setTag = '[object Set]';
+    const arrayTag = '[object Array]';
+    const objectTag = '[object Object]';
+    const argsTag = '[object Arguments]';
+    const boolTag = '[object Boolean]';
+    const dateTag = '[object Date]';
+    const numberTag = '[object Number]';
+    const stringTag = '[object String]';
+    const symbolTag = '[object Symbol]';
+    const errorTag = '[object Error]';
+    const regexpTag = '[object RegExp]';
+    const funcTag = '[object Function]';
+
+    /**
+     * 1. 实现一个深拷贝, 并考虑对象相互引用、Symbol、
+     * 2. 日期对象、正则对象 ？？？  直接返回新的？ new Date(obj)、 new RegExp(obj)
+     * 
+     * JSON.parse问题： 
+     *  1. symbol作为key，不会被遍历到，
+        2. 有环引用，会报错
+        3. 不能复制function、正则、Symbol
+        4. 相互的引用会被重复复制 
+     */
+
+    let obj = {
+      name: '小明',
+      age: 24,
+      male: true,
+      birthday: new Date('1998-04-21'),
+      skills: ['唱', '跳', 'rap', '篮球'],
+      classmate: [
+        {
+          name: '小红',
+          age: 24
+        },
+        {
+          name: '小张',
+          age: 24
+        },
+      ],
+      map: new Map([['a', 1, 'b', 2]]),
+      set: new Set([1, 2, 3, 4, 5]),
+      getName: function () {
+        console.log(`名字是${this.name}`)
+      },
+      reg: /\d+/gi,
+      error: new Error(),
+      a: undefined,
+      b: Symbol(),
+      [Symbol()]: 123,
+      c: NaN,
+      d: Infinity,
+      e: -Infinity,
+    }
+    obj.f = obj
+
+    /** 简易版深拷贝 */
+    function deepClone(target) {
+      if (typeof target === 'object') {
+        let cloneTarget = Array.isArray(target) ? [] : {}
+        console.log(target, 'target===target')
+        Reflect.ownKeys(target).forEach(key => {
+          console.log(key, 'key-----')
+          cloneTarget[key] = deepClone(target[key])
+        })
+        return cloneTarget
+      } else {
+        return target
+      }
+    }
+
+
+    // let obj = {
+    //   a: 1,
+    //   b: {
+    //     b1: 11,
+    //     b2: 22,
+    //   }
+    // }
+    // let res = deepClone(obj)
+
+    // res.a = 2
+    // res.b.b1 = 222
+    // console.log(obj, 'test')
+    // console.log(res, 'resresrsr')
+
+
+    /**
+      let cloneObj = deepClone(obj)
+      obj.age = 100
+      obj.classmate[1].age = 100
+      obj.set.add('1123')
+      obj.skills.push('计算机')
+      obj.name = '小梅'
+      obj.map.set('name', '小明')
+
+      console.log(obj)
+      console.log(cloneObj)
+      obj.getName()
+      cloneObj.getName()
+    */
+    /**
+      1）修改原对象的任意属性，拷贝对象不受影响，反之亦然。符合深拷贝的定义
+      2）支持拷贝如下数据结构：Date、Symbol、Function、RegExp 等
+      3）环状引用不会报错
+      4）Date 类型的属性在深拷贝之后不会变成字符串（JSON.parse(JSON.stringify(obj)) 深拷贝存在的问题）
+      5）对象属性值是 RegExp 类型或者 Error 类型的时候，深拷贝之后不会变成空对象（JSON.parse(JSON.stringify(obj)) 深拷贝存在的问题）
+      6）对象属性值是函数类型、 undefined 类型、Symbol 类型的时候，深拷贝之后不会丢失（JSON.parse(JSON.stringify(obj)) 深拷贝存在的问题）
+      7）对象的属性（key）是 Symbol 类型的时候，深拷贝之后不会丢失（JSON.parse(JSON.stringify(obj)) 深拷贝存在的问题）
+      8）对象的属性值是 NaN、Infinity、-Infinity 的时候，深拷贝之后不会变成 null（JSON.parse(JSON.stringify(obj)) 深拷贝存在的问题）
+    */
+  </script>
+</body>
+
+</html>
