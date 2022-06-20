@@ -63,7 +63,7 @@ export default class Compiler {
   updata(node, key, directiveName) {
     // v-model v-text v-html v-on:click
     const updateFn = this[directiveName + "Updater"];
-    updateFn && updateFn.call(this, node, this.vm[key], key, directiveName);
+    updateFn && updateFn.call(this, node, this.vm[key], key);
   }
   /** 解析v-text */
   textUpdater(node, value, key) {
