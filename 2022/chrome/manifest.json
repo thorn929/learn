@@ -1,0 +1,56 @@
+{
+  // 插件名
+  "name": "特别关注-掘金",
+  // 插件描述
+  "description": "一个 掘金-特别关注用户 的工具",
+  // 插件版本
+  "version": "0.0.1",
+  // 使用的 manifest.json 的版本
+  "manifest_version": 2,
+  // 图标
+  "icons": { "16": "image/follow.png", "48": "image/follow.png", "128": "image/follow.png" },
+  "browser_action": {
+    // 我们使用的默认图标
+    "default_icon": "image/follow.png",
+    // 鼠标放到图标上，即可展示的 标题 内容
+    "default_title": "特别关注-掘金", 
+    // 点击按钮后，展示的页面
+    "default_popup": "index.html"
+  },
+  "background": {
+    // 对应的js文件位置
+    "scripts": ["js/background.js"],
+    // true 则表示一直开启运行，false 则表示，只通过相关事件驱动运行
+    // 一般我们设置 false 即可
+    "persistent": false
+  },
+  
+  "content_scripts": [
+    {
+      // 指定了，只有在哪几个页面中，才会开启注入操作，是一个数组
+      "matches": ["https://juejin.cn/user/*", "https://juejin.cn/post/*"],
+      
+      // 对应的js文件位置
+      "js": ["js/content-script.js"],
+      
+      // js文件添加的时机，有三个值可以选择，推荐 document_idle
+      // document_start ：在 dom 页面之前插入 js 代码，dom 未解析完毕。
+      // document_end : 在 dom 末尾插入js 代码，dom已经解析，但一些图片资源可能未加载完毕。
+      // document_idle : 浏览器空闲时处理，即 dom 已经解析，资源已经完毕。
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    // 支持访问浏览器选项卡
+    "tabs",
+    // 获取当前活动选项卡
+    "activeTab",
+    // 存储
+    "storage", 
+    // 右键菜单
+    "contextMenus",
+    // 请求地址
+    "https://api.juejin.cn/user_api/v1/user"
+  ]
+}
+

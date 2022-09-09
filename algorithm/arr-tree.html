@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    console.time('tree')
+    let arr = [
+      { id: 4, name: "部门4", pid: 3 },
+      { id: 2, name: "部门2", pid: 1 },
+      { id: 1, name: "部门1", pid: 0 },
+      { id: 3, name: "部门3", pid: 1 },
+      { id: 5, name: "部门5", pid: 4 },
+    ];
+
+    // [
+    //   {
+    //     id: 1,
+    //     name: "部门1",
+    //     pid: 0,
+    //     children: [
+    //       {
+    //         id: 2,
+    //         name: "部门2",
+    //         pid: 1,
+    //         children: [],
+    //       },
+    //       {
+    //         id: 3,
+    //         name: "部门3",
+    //         pid: 1,
+    //         children: [
+    //           // 结果 ,,,
+    //         ],
+    //       },
+    //     ],
+    //   },
+    // ];
+
+    // method: 1 最慢的一种 
+    // function tree(arr) {
+    //   let firstArr = []
+    //   const map = arr.reduce((pre, cur) => {
+    //     pre[cur.id] = cur
+    //     return pre
+    //   }, {})
+
+    //   arr.forEach(item => {
+    //     // 每一个obj parent ? (parent.children || (parent.children = [])).push(item) : firstArr.push(item) })
+    //     let parent = map[item.pid]
+    //     return parent ? (parent.children || (parent.children = [])).push(item) : firstArr.push(item)
+    //   })
+
+    //   return firstArr
+    // }
+
+
+    // method: 2 
+    function tree(arr, pid = 0) {
+      let tem = []
+      arr.forEach(el => {
+
+        if (el.pid == pid) {
+          console.log(el, 'ell')
+          el.child = tree(arr, el.id)
+          tem.push(el)
+        }
+      })
+      return tem
+    }
+
+    // method: 3
+    // const tree = arr => arr.filter(item => { item.children = arr.filter(v => v.pid === item.id); return !item.pid })
+
+    // method: 4
+    // const tree = arr => arr.reduce((total, item, index, list) => {
+
+    //   if (item.pid === 0) {
+    //     total.push({ item, children: list.filter(f => f.pid === item.id) })
+    //   } else {
+    //     item.children = list.filter(f => f.pid === item.id)
+    //   }
+
+    //   return total
+    // }, [])
+
+    console.log(tree(arr))
+
+    console.timeEnd('tree');
+
+
+
+  </script>
+</body>
+
+</html>
