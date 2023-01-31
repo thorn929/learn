@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // [1,null,2,0, false, 3, true]
+    var preorderTraversal = function (root, res = []) {
+      const stack = [];
+      if (root) stack.push(root);
+      console.log(stack.length, 'stack--')
+      const node = stack.pop();
+      console.log(node, 'node--')
+      if (node.right) stack.push(node.right); // 右
+      if (node.left) stack.push(node.left); // 左
+      stack.push(node); // 中
+      stack.push(null);
+      console.log(res, 'res')
+      return res;
+    };
+
+    // let preorderTraversal = function (root) {
+    //   const res = []
+    //   const stack = []
+    //   if (root) stack.push(root)
+    //   console.log(stack, 'stack-')
+    //   console.log(stack.length, 'rooter')
+
+    //   // while (stack.length) {
+    //   //   const n = stack.pop()
+    //   //   consoel.log(n, 'n---')
+    //   //   res.push(n.val)
+    //   //   if (n.right) stack.push(n.right)
+    //   //   if (n.left) stack.push(n.left)
+    //   // }
+    //   // return res
+    // };
+
+    let arr = [1, null, 2, 3,]
+    let res = preorderTraversal(arr)
+    console.log(res, ';22')
+  </script>
+</body>
+
+</html>

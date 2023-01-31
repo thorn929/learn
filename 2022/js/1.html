@@ -21,26 +21,19 @@
     getNumber(1, arr)
 
 
-
-
-
-
-
-
-
     // 这道题目考察数组的常用基本操作方法。思路是先做数组内部值的排序，排序完成之后因为需要由大到小所以在反转下数组 。最后在做数组的去重处理，最终返还答案。实现代码如下：
     // function getNum(k, arr) {
-    //   // 排列数组及反转       
+    //   // 排列数组及反转
     //   let res = arr.sort((a, b) => b - a);
-    //   // 将数组转化成set去重   
+    //   // 将数组转化成set去重
     //   let set = new Set(res);
-    //   // 将类数组转回数组       
+    //   // 将类数组转回数组
     //   let newArr = Array.from(set);
     //   if (typeof newArr[k - 1] !== "undefined") {
-    //     // 返回查找到的数据           
+    //     // 返回查找到的数据
     //     return newArr[k - 1];
     //   } else {
-    //     // 未找到数据排除错误          
+    //     // 未找到数据排除错误
     //     throw Error("未找到对应数据");
     //   }
     // }
