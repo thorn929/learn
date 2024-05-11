@@ -10,7 +10,6 @@
 
 <body>
   <script>
-
     const mapTag = '[object Map]';
     const setTag = '[object Set]';
     const arrayTag = '[object Array]';
@@ -36,19 +35,20 @@
         4. 相互的引用会被重复复制 
      */
 
+
     let obj = {
-      name: '小明',
+      name: '鸡哥',
       age: 24,
       male: true,
       birthday: new Date('1998-04-21'),
       skills: ['唱', '跳', 'rap', '篮球'],
       classmate: [
         {
-          name: '小红',
+          name: '牙签',
           age: 24
         },
         {
-          name: '小张',
+          name: '掏粪',
           age: 24
         },
       ],
@@ -83,7 +83,6 @@
       }
     }
 
-
     // let obj = {
     //   a: 1,
     //   b: {
@@ -97,7 +96,6 @@
     // res.b.b1 = 222
     // console.log(obj, 'test')
     // console.log(res, 'resresrsr')
-
 
     /**
       let cloneObj = deepClone(obj)

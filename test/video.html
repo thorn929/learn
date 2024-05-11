@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Dash.js Rocks</title>
+  <style>
+    video {
+      width: 640px;
+      height: 360px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <video id="videoPlayer" data-dashjs-player controls />
+    <div>跳转到30秒</div>
+  </div>
+  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+
+  <script>
+    (function () {
+      let url = "https://image.bitautoimg.com/chuangxin-meta/test/20231008/xy01/my.mpd";
+      // let url = 'https://dash.akamaized.net/envivio/EnvivioDash3/manifest.mpd'
+      let player = dashjs.MediaPlayer().create();
+
+
+      player.initialize(document.querySelector("#videoPlayer"), url, true, 0);
+
+      setTimeout(() => {
+        console.log(111)
+        document.querySelector("#videoPlayer").play()
+        // player.seek(130)
+        player.play()
+      }, 1010)
+
+    })();
+  </script>
+</body>
+
+</html>

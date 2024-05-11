@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    class Looper {
+      constructor(arr, batchSize, loopInterval, pauseInterval) {
+        this.arr = arr;
+        this.batchSize = batchSize;
+        this.loopInterval = loopInterval;
+        this.pauseInterval = pauseInterval;
+        this.index = 0;
+        this.loopTimer = null;
+        this.currentBatchTimers = [];
+      }
+
+      loop() {
+        if (this.index >= this.arr.length) {
+          this.index = 0; // Reset index to start from the beginning
+        }
+
+        const batch = this.arr.slice(this.index, this.index + this.batchSize);
+        batch.forEach((item, i) => {
+          this.currentBatchTimers.push(setTimeout(() => {
+            console.log(item);
+          }, i * this.loopInterval));
+        });
+
+        this.loopTimer = setTimeout(() => {
+          console.log("Paused for 1 second.");
+          this.currentBatchTimers.forEach(timer => clearTimeout(timer));
+          this.index += this.batchSize;
+          this.loop();
+        }, this.batchSize * this.loopInterval + this.pauseInterval);
+      }
+
+      start() {
+        if (this.loopTimer) return; // If loop is already running, do nothing
+        this.loop();
+      }
+
+      stop() {
+        clearTimeout(this.loopTimer);
+        this.currentBatchTimers.forEach(timer => clearTimeout(timer));
+        this.loopTimer = null;
+      }
+    }
+
+    const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35];
+    const looper = new Looper(arr, 6, 500, 1000);
+
+    // 开始循环
+    looper.start();
+
+    // 立即暂停
+    setTimeout(() => {
+      looper.stop();
+    }, 10000);
+
+  </script>
+</body>
+
+</html>

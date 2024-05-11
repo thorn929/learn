@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    let compareVersion = function (version1, version2) {
+      const n = version1.length, m = version2.length;
+      let i = 0, j = 0;
+      while (i < n || j < m) {
+        let x = 0;
+        for (; i < n && version1[i] !== '.'; ++i) {
+          x = x * 10 + version1[i].charCodeAt() - '0'.charCodeAt();
+        }
+        console.log(x, 'xxx')
+        ++i; // 跳过点号
+        let y = 0;
+        for (; j < m && version2.charAt(j) !== '.'; ++j) {
+          y = y * 10 + version2[j].charCodeAt() - '0'.charCodeAt();
+        }
+        console.log(y, 'yyy')
+        ++j; // 跳过点号
+        if (x !== y) {
+          return x > y ? 1 : -1;
+        }
+      }
+      return 0;
+    };
+
+    let res = compareVersion('2.5.1-C', '1.4.2-D')
+    console.log(res, 'res')
+
+  </script>
+</body>
+
+</html>
